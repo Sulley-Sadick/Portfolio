@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    /* COLORS */
+    /* whitemode theme colors  */
+    --light-white-color: rgb(252, 252, 253);
+    --ash-gray-color: rgb(78, 82, 90);
+    --dark-color: rgb(36, 38, 42);
+    --dark-saturated-purple-color: rgb(110, 6, 242);
+    --hover-color: rgb(121, 96, 210);
+    --sticky-color: rgb(245, 246, 247);
+    --toggle-bg: hsl(223, 50%, 87%);
+    --gray-color: rgba(128, 128, 128, 0.71);
+
+    /* darkmode theme colors */
+    --dark-bg-color: rgb(22, 24, 28);
+    --dark-text-secondary-color: #a5a8af;
+    --dark-primary-color: rgb(245, 246, 247);
+    --dark-accent-purple-color: rgb(155, 96, 255);
+    --dark-accent-hover-color: rgb(178, 160, 255);
+    --dark-surface-color: rgb(30, 32, 38);
+    --dark-toggle-bg-color: rgb(54, 64, 89);
+    --dark-border-muted-color: rgba(180, 180, 180, 0.65);
+
+    /* fonts */
+    --font-family: sans-serif;
+  }
+
+  h3 {
+    @apply mt-4 mb-2 flex items-center gap-2 text-2xl font-black;
+  }
+}
+
+@layer components {
+  /* styles for sticky nav functionality */
+  .sticky-nav {
+    @apply fixed top-0 z-10 w-full bg-(--sticky-color) dark:bg-(--dark-surface-color);
+  }
+
+  .bar {
+    @apply h-0.5 w-6 bg-(--ash-gray-color) duration-300 dark:bg-(--light-white-color);
+  }
+
+  .bar__top.active {
+    @apply -translate-y-[0.1px] rotate-45 transform duration-300;
+  }
+
+  .bar__bottom.active {
+    @apply translate-y-[0.1px] -rotate-45 transform duration-300;
+  }
+
+  .nav__links {
+    @apply transition duration-400;
+  }
+
+  .nav__links.show__nav {
+    @apply -translate-x-[150%] sm:translate-0;
+  }
+
+  .nav__link {
+    @apply hover:text-(--dark-saturated-purple-color) dark:hover:text-(--dark-accent-hover-color);
+  }
+
+  .close__btn {
+    @apply flex cursor-pointer items-center text-2xl text-(--ash-gray-color) dark:text-(--light-white-color);
+  }
+
+  /* styles for the swup functionality */
+  .transition-fade {
+    @apply translate-x-0 transform duration-300;
+  }
+
+  html.is-animating .transition-fade {
+    @apply translate-x-full transform;
+  }
+
+  /* styles for section fading in */
+  .section {
+    @apply transform transition duration-800;
+  }
+
+  .section--hidden {
+    @apply translate-y-32 transform opacity-0;
+  }
+
+  /* helper classes */
+  .dot {
+    @apply mt-5 block h-3 w-3 rounded-full bg-(--dark-saturated-purple-color) dark:bg-(--dark-accent-purple-color);
+  }
+
+  .card {
+    @apply mb-[1.2rem] w-full rounded-2xl bg-(--gray-color) px-10 py-6 shadow-md;
+  }
+
+  .image {
+    @apply mx-auto w-full max-w-160 rounded-2xl;
+  }
+
+  .arrow {
+    @apply rounded-full border-2 border-(--dark-saturated-purple-color) fill-(--dark-saturated-purple-color) p-[0.05rem] dark:border-(--dark-accent-purple-color) dark:fill-(--dark-accent-purple-color);
+  }
+
+  .arrow:hover {
+    @apply bg-(--dark-saturated-purple-color) fill-(--light-white-color);
+  }
+
+  .project--title {
+    @apply mt-4 mb-2 flex items-center gap-2 text-2xl font-black;
+  }
+
+  .project--desc {
+    @apply mt-[0.7rem] mb-12 pr-20 text-[1.1rem] font-semibold text-(--ash-gray-color) dark:text-(--dark-primary-color);
+  }
+
+  /* set padding right to 0 when page is in-between 320px and 800px */
+  @media screen and (min-width: 20rem) and (max-width: 50rem) {
+    .project--desc {
+      @apply pr-0;
+    }
+  }
+
+  .sub--title {
+    @apply mb-4 flex items-center gap-1 text-4xl font-black text-(--dark-color) dark:text-(--dark-primary-color);
+  }
+
+  input,
+  textarea {
+    @apply relative my-2 rounded-[0.2rem] border-0 border-b-4 border-[#333] border-b-(--dark-color) bg-(--light-white-color) p-6 text-[20px] text-[#9b9b9b] italic shadow-[6px_6px_18px_0px_rgba(0,0,0,0.3)] outline-none;
+  }
+
+  .purple--color {
+    @apply text-(--dark-saturate-purple-color);
+  }
+  .dark--color {
+    @apply text-(--dark-saturate-purple-color);
+  }
+}
