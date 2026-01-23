@@ -17,6 +17,8 @@
     "vite": "npm:rolldown-vite@7.2.5"
   },
   "dependencies": {
-    "swup": "^4.8.2"
+    "@tailwindcss/vite": "^4.1.18",
+    "swup": "^4.8.2",
+    "tailwindcss": "^4.1.18"
   }
 }
