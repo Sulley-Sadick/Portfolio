@@ -4,8 +4,8 @@ import "/src/style.css";
 // import navLinksView from navLinksView.js
 import navLinksView from "./views/navLinksView.js";
 
-// import pageChangeView from pageChangeView.js
-import pageChangeView from "./views/pageChangeView.js";
+// import pageTransitionView from pageTransitionView.js
+import pageTransitionView from "./views/pageTransitionView.js";
 
 // import sectionFadeInView from sectionFadeInView.js
 import sectionFadeInView from "./views/sectionFadeInView.js";
