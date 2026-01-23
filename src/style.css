@@ -57,7 +57,7 @@
   }
 
   .nav__links.show__nav {
-    @apply -translate-x-[150%] sm:translate-0;
+    @apply -translate-x-[150%] lg:translate-0;
   }
 
   .nav__link {
@@ -112,14 +112,7 @@
   }
 
   .project--desc {
-    @apply mt-[0.7rem] mb-12 pr-20 text-[1.1rem] font-semibold text-(--ash-gray-color) dark:text-(--dark-primary-color);
-  }
-
-  /* set padding right to 0 when page is in-between 320px and 800px */
-  @media screen and (min-width: 20rem) and (max-width: 50rem) {
-    .project--desc {
-      @apply pr-0;
-    }
+    @apply mt-[0.7rem] mb-12 pr-20 text-[1.1rem] font-semibold text-(--ash-gray-color) @min-xs:pr-0 dark:text-(--dark-primary-color);
   }
 
   .sub--title {
