@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+/* POPPINS FONTS */
+@font-face {
+  font-family: "Poppins";
+  src: url("../src/assets/fonts/Poppins-Regular.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../src/assets/fonts/Poppins-Medium.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../src/assets/fonts/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/*  INTER FONTS */
+@font-face {
+  font-family: "Inter";
+  src: url("../src/assets/fonts/Inter_18pt-Regular.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../src/assets/fonts/Inter_28pt-Medium.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../src/assets/fonts/Inter_18pt-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/*  FINLANDICAHEADLINE FONTS*/
+@font-face {
+  font-family: "Finlandica Headline";
+  src: url("../src/assets/fonts/FinlandicaHeadline-Regular.ttf")
+    format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Finlandica Headline";
+  src: url("../src/assets/fonts/FinlandicaHeadline-Medium.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Finlandica Headline";
+  src: url("../src/assets/fonts/FinlandicaHeadline-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  /* FONTS */
+  --font-poppins: "Poppins", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-finlandica: "Finlandica Headline", sans-serif;
+
+  /* COLORS */
+  --muted: #000;
+  --muted-secondary: #1e1e1e;
+  --accent: #53dd6c;
+  --accent-hover: #44c75a;
+  --neutral: #f5f6f7;
+  --neutral-secondary: #a3a3a3;
+
+  /* HEIGHT */
+  --app-height: calc(100vh - 4.5rem);
+}
+
+@theme inline {
+  /* FONTS */
+  --font-poppins: var(--font-poppins);
+  --font-inter: var(--font-inter);
+  --font-finlandica: var(--font-finlandica);
+
+  /* COLORS */
+  --color-muted: var(--muted);
+  --color-muted-secondary: var(--muted-secondary);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-neutral: var(--neutral);
+  --color-neutral-secondary: var(--neutral-secondary);
+  --color-success: var(--color-emerald-500);
+  --color-danger: var(--color-rose-500);
+  --height-app-height: var(--app-height);
+}
+
+@layer base {
+  *,
+  html,
+  body {
+    scrollbar-width: thin;
+    scrollbar-color: var(--muted);
+    scrollbar-track-color: var(--accent);
+  }
+
+  body {
+    @apply bg-muted font-finlandica text-neutral min-h-screen overflow-x-hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-finlandica tracking-tighter;
+  }
+
+  input,
+  textarea {
+    @apply bg-muted-secondary/60 border-neutral-secondary/40 focus:border-neutral/60 rounded-md border py-2 focus:outline-none;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+@utility flex-center {
+  @apply flex items-center justify-center;
+}
+
+@layer utilities {
+  .link {
+    @apply before:absolute before:inset-0 before:z-1 before:cursor-pointer before:content-['_'];
+  }
+}
+
+@layer components {
+  .section {
+    @apply min-h-app-height mx-auto grid w-full px-6 py-12 md:max-w-6xl md:py-24;
+  }
+
+  .section__title {
+    @apply text-center;
+  }
+}
