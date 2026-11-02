@@ -1,3 +1,4 @@
+
 import { type ContactDataType } from "../../features/contact";
 import { contactValiator } from "../../features/contact/contact.validator";
 import { supabase } from "../../libs/supabase/supabase-client";
@@ -32,7 +33,7 @@ export function useContact() {
       setResponse({
         message:
           error instanceof Error
-            ? error.message
+            ? error
             : "Something went wrong, try again!",
         error: true,
       });

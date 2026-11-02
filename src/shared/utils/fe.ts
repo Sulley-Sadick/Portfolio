@@ -5,7 +5,7 @@ export function fe(error: unknown) {
   if (typeof error === "string") return error;
 
   if (error instanceof ZodError)
-    return error?.issues[0]?.message || "Something went wrong!";
+    return error.issues[0]?.message || "Something went wrong!";
 
   if (error instanceof AxiosError)
     return (error?.response?.data?.message as string) || error?.message;
