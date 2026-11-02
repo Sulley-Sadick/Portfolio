@@ -2,6 +2,14 @@ import { withSupabase } from 'npm:@supabase/server@1';
 import  {Resend } from 'npm:resend';
 
 
+type ContactMessageOptions = {
+  id: number;
+  name: string,
+  contact: string;
+  message: string
+}
+
+
 type  DatabaseWebhookPayload = {
   type : 'INSERT',
   table: 'contact_messages';
@@ -22,14 +30,9 @@ export default {
 
       if(payload.type !=='INSERT' || payload.table !=='contact_messages' )return Response.json({error: 'Unsupported webhooks'}, {status: 400})
 
-
         const {id, name, message, contact, } = payload.record;
 
-
-
         if(!name || !message || !contact)return Response.json({status: 400}, {error: 'Missing contact message fields'})
-
-
 
           const {data, error} =  await resend.emails.send({from: 'onboarding@resend.dev', to: 'sulleysadick766@gmail.com', subject: `New contact message from ${name}`, text: `
             New contact form  submission
@@ -41,20 +44,14 @@ export default {
 
 
             if(error){
-              console.error(`💥 Resend error:`, error)
-
-
-              return Response.json({error: 'Failed to send email'}, {status: 500})
-
-
+              return Response.json({error: error.message ??  'Failed to send email'}, {status: 500})
             }
 
             return Response.json({success: true,  emailId: data?.id})
       
     } catch (error) {
 
-
-      return Response.json({error: 'Unable to process contact message'}, {status: 500})
+      return Response.json({error: error.message ?? 'Unable to process contact message'}, {status: 500})
       
     }
 }),
