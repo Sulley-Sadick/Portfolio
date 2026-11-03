@@ -76,7 +76,7 @@ export function ContactSection({
             <Label.Title>Email / Phone Number</Label.Title>
             <Input
               {...register("contact")}
-              placeholder="Enter your email address / phone number"
+              placeholder="johnsmith@gmail.com / +233 54 586 2254"
             />
           </Label.Wrapper>
 
