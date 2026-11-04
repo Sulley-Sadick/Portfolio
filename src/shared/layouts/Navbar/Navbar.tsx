@@ -1,11 +1,11 @@
 import { AnimatePresence, motion, type MotionProps } from "motion/react";
 import { useLocation } from "react-router";
+import { type ComponentProps } from "react";
 
 import type { FramerAnimatePositionProps } from "../../ui/Framer/framer.types";
 import { Backdrop } from "../../ui/primitive/Backdrop";
 import { FramerAnimatePosition } from "../../ui/Framer/components/FramerAnimatePosition";
 import { cn } from "../../utils/cn";
-import { type ComponentProps } from "react";
 import { NAVLINKS } from "./constants";
 import { Link, StyledDotLink } from "../../ui/primitive/Button/IconLink";
 import { motionVariants } from "../../ui/Framer/utils/motion";

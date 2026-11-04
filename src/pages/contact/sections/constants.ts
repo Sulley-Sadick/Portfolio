@@ -1,8 +1,5 @@
 import { motionVariants } from "../../../shared/ui/Framer/utils/motion";
 
-export const socialMediaLinksVariants = motionVariants({
-  hidden: { opacity: 0 },
-});
 
 export const formSectionVariants = motionVariants({
   hidden: { opacity: 0, y: 8 },
