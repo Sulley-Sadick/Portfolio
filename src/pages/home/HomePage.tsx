@@ -1,9 +1,11 @@
 import { HeroSection } from "./sections/Hero";
+import { Mission } from "./sections/Mission";
 
 export function HomePage() {
   return (
-    <div className="mt-20">
+    <main className="mt-20">
       <HeroSection />
-    </div>
+      <Mission />
+    </main>
   );
 }
