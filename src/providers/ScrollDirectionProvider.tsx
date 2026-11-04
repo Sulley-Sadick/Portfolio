@@ -18,13 +18,13 @@ function GoToTop() {
 
   return (
     <Visibility show={direction === "Top" && currentScroll > 300}>
-      <div className="fixed right-0 bottom-2 border border-red-500 pr-5">
+      <div className="fixed right-0 bottom-15 pr-5 md:bottom-20">
         <Button
           onClick={() => {
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
         >
-          <LuArrowUpToLine />
+          <LuArrowUpToLine size={30} />
         </Button>
       </div>
     </Visibility>
