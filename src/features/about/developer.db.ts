@@ -3,6 +3,7 @@ import type { AboutDeveloperType } from "./about.contract.types";
 
 export const DEVELOPER: AboutDeveloperType = Object.freeze({
   avatar1: "/src/assets/images/sadick.jpg",
+  avatar2: "/src/assets/images/sadick2.jpg",
   firstName: "Sadick",
   lastName: "Sulley",
   name: "Sadick Sulley",
