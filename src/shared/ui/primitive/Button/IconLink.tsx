@@ -59,7 +59,7 @@ export function IconLink({
   return (
     <Link
       className={cn(
-        "group flex items-center justify-center gap-x-1.5 rounded-full",
+        "group flex flex-row items-center justify-center gap-x-1.5 rounded-full",
         className,
       )}
       x="center"
