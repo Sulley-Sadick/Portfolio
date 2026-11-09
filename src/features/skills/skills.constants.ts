@@ -1,8 +1,8 @@
-/** Public path for skill logos (files live under `public/images/skills/`). */
-export const SKILLS_IMAGE_BASE_PATH = "/images/skills";
+import { publicAssetPath } from "../../shared/utils/publicAssetPath";
 
+/** Public path for skill logos (files live under `public/images/skills/`). */
 export function skillImagePath(fileName: string): string {
-  return `${SKILLS_IMAGE_BASE_PATH}/${fileName}`;
+  return publicAssetPath(`images/skills/${fileName}`);
 }
 
 /** Home preview grid: 3 columns × 3 rows (see Tendanzo-style toolkit teaser). */

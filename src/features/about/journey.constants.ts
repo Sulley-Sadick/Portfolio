@@ -1,8 +1,8 @@
-/** Public path for journey org logos (files live under `public/images/journey/`). */
-export const JOURNEY_IMAGE_BASE_PATH = "/images/journey";
+import { publicAssetPath } from "../../shared/utils/publicAssetPath";
 
+/** Public path for journey org logos (files live under `public/images/journey/`). */
 export function journeyImagePath(fileName: string): string {
-  return `${JOURNEY_IMAGE_BASE_PATH}/${fileName}`;
+  return publicAssetPath(`images/journey/${fileName}`);
 }
 
 export const journeySectionContent = {

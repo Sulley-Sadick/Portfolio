@@ -1,8 +1,8 @@
-/** Public path for project screenshots (files live under `public/images/projects/`). */
-export const PROJECT_IMAGE_BASE_PATH = "/images/projects";
+import { publicAssetPath } from "../../shared/utils/publicAssetPath";
 
+/** Public path for project screenshots (files live under `public/images/projects/`). */
 export function projectImagePath(fileName: string): string {
-  return `${PROJECT_IMAGE_BASE_PATH}/${fileName}`;
+  return publicAssetPath(`images/projects/${fileName}`);
 }
 
 /** Tags shown on a card before collapsing the rest into "+N". */
