@@ -11,7 +11,6 @@ import { Link, StyledDotLink } from "../../ui/primitive/Button/IconLink";
 import { motionVariants } from "../../ui/Framer/utils/motion";
 import { routes } from "../../routes/routes";
 import {
-  isHomeSectionActive,
   isHomeTopActive,
   useSmoothScroll,
 } from "../../hooks/useSmoothScroll/useSmoothScroll";
@@ -107,26 +106,20 @@ const NavLink = function ({
   className,
   title,
   path,
-  sectionId,
   onNavigate,
   ...props
 }: NavLinkProps) {
   const { pathname, hash } = useLocation();
-  const { goToHomeSection, goToHomeTop } = useSmoothScroll();
+  const { goToHomeTop } = useSmoothScroll();
 
-  const isHomeLink = path === routes.home && !sectionId;
+  const isHomeLink = path === routes.home;
 
-  const active = sectionId
-    ? isHomeSectionActive(pathname, hash, sectionId)
-    : isHomeLink
-      ? isHomeTopActive(pathname, hash)
-      : pathname === path;
+  const active = isHomeLink
+    ? isHomeTopActive(pathname, hash)
+    : pathname === path;
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    if (sectionId) {
-      event.preventDefault();
-      goToHomeSection(sectionId);
-    } else if (isHomeLink && pathname === routes.home) {
+    if (isHomeLink && pathname === routes.home) {
       event.preventDefault();
       goToHomeTop();
     }

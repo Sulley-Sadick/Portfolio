@@ -1,14 +1,8 @@
-import {
-  homeSectionHref,
-  homeSections,
-  routes,
-  type HomeSectionId,
-} from "../../routes/routes";
+import { routes } from "../../routes/routes";
 
 export type Navlink = {
   title: string;
   path: string;
-  sectionId?: HomeSectionId;
 };
 
 export const NAVLINKS: Navlink[] = [
@@ -19,10 +13,5 @@ export const NAVLINKS: Navlink[] = [
   {
     title: "About",
     path: routes.about,
-  },
-  {
-    title: "Projects",
-    path: homeSectionHref(homeSections.projects),
-    sectionId: homeSections.projects,
   },
 ];
