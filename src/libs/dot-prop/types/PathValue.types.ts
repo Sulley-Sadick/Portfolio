@@ -65,7 +65,7 @@ export type ArrayPathImpl<
       : true extends AnyIsEqual<TraversedTypes, V>
         ? never
         : `${K}` | `${K}.${ArrayPathInternal<V, TraversedTypes | V>}`
-    : true extends AnyIsEqual<V, TraversedTypesc>
+    : true extends AnyIsEqual<V, TraversedTypes>
       ? never
       : `${K}.${ArrayPathInternal<V, TraversedTypes | V>}`;
 

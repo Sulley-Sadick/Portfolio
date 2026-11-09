@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 import { cn } from "../../utils/cn";
-import type { Backdrop } from "../types/types";
+import type { Backdrop } from "../../types/types";
 
 export function Backdrop({ className, ...props }: Backdrop) {
   useEffect(() => {
