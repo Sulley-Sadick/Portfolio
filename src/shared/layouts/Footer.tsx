@@ -66,6 +66,7 @@ const NAVIGATIONS: FooterRouteLink[] = [
   { title: "Home", path: routes.home },
   { title: "Contact", path: routes.contact },
   { title: "About", path: routes.about.home },
+  { title: "Engineering Toolkit", path: routes.about.skills },
 ];
 
 function Navigations() {

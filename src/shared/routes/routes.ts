@@ -4,5 +4,6 @@ export const routes = Object.freeze({
   about: {
     home: "/about",
     professionalJourney: "/about#professional-journey",
+    skills: "/about#skills",
   },
 });
