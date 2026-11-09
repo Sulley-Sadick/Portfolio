@@ -11,11 +11,15 @@ export function Image({
   alt,
   url,
   imageClassName,
+  className,
   children,
   ...props
 }: ImageProps) {
   return (
-    <div className="relative size-full overflow-hidden" {...props}>
+    <div
+      className={cn("relative size-full overflow-hidden", className)}
+      {...props}
+    >
       <img
         src={url}
         alt={alt}
