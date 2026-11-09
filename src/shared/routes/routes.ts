@@ -1,5 +1,8 @@
 export const routes = Object.freeze({
   home: "/",
   contact: "/contact",
-  about: "/about",
+  about: {
+    home: "/about",
+    professionalJourney: "/about#professional-journey",
+  },
 });

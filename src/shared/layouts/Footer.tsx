@@ -65,7 +65,7 @@ type FooterRouteLink = {
 const NAVIGATIONS: FooterRouteLink[] = [
   { title: "Home", path: routes.home },
   { title: "Contact", path: routes.contact },
-  { title: "About", path: routes.about },
+  { title: "About", path: routes.about.home },
 ];
 
 function Navigations() {

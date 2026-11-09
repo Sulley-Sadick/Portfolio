@@ -12,6 +12,6 @@ export const NAVLINKS: Navlink[] = [
   },
   {
     title: "About",
-    path: routes.about,
+    path: routes.about.home,
   },
 ];
