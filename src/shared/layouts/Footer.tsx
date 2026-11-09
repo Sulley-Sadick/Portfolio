@@ -5,6 +5,7 @@ import { SocialMediaLinks } from "../components/socialMediaLinks/SocialMediaLink
 import { useCurrentYear } from "../hooks/useCurrentYear";
 import { routes } from "../routes/routes";
 import { Link } from "../ui/primitive/Button/IconLink";
+import { Image } from "../ui/primitive/Image";
 import { cn } from "../utils/cn";
 import {
   isHomeTopActive,
@@ -22,10 +23,13 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-x-15 gap-y-10 py-10 md:grid-cols-2 lg:grid-cols-5">
           <div className="flex flex-col gap-y-5 lg:col-span-2">
             <div className="*:mt-5">
-              <div className="flex items-center gap-x-2">
-                <div className="-rotate-12 cursor-default duration-300 ease-in-out hover:rotate-0">
-                  <p>Image</p>
-                </div>
+              <div className="flex items-center gap-3">
+                <Image
+                  alt={developer.name}
+                  url={developer.avatar2}
+                  className="border-muted-secondary relative size-10 shrink-0 overflow-hidden rounded-full border p-0.5"
+                  imageClassName="object-cover object-[center_30%]"
+                />
                 <div>
                   <h3 className="text-accent font-bold uppercase">
                     [{`Mr. ${developer.lastName}`}]
