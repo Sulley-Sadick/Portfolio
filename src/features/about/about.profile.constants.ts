@@ -8,5 +8,5 @@ export const aboutProfileContent = {
   titleLead: "Hi, I'm",
   titleAccent: `${DEVELOPER.firstName}.`,
   description:
-    "A frontend developer who enjoys turning ideas into fast, responsive, and modern web experiences. I work mainly with React and TypeScript, and I care about clean interfaces, accessible markup, and code that stays maintainable as products grow.",
+    "Junior front-end developer available for freelance and client projects. I build responsive sites with React and TypeScript, ship work you can verify on GitHub and Vercel, and care about accessible markup and maintainable code as products grow.",
 } as const;

@@ -1,4 +1,3 @@
-import { TanstackLogo } from "../../assets/svgs/TanstackLogo";
 import { BiLogoVisualStudio } from "react-icons/bi";
 import {
   SiCss,
@@ -8,9 +7,11 @@ import {
   SiJavascript,
   SiNpm,
   SiPnpm,
+  SiReact,
   SiReactrouter,
   SiTailwindcss,
   SiTypescript,
+  SiVite,
 } from "react-icons/si";
 
 import type { SkillType } from "./skills.contract.types";
@@ -73,11 +74,18 @@ export const SKILLS: SkillType[] = [
     category: "Frontend Frameworks",
     items: [
       {
-        title: "TanStack Start",
-        icon: TanstackLogo,
-        color: "text-white",
+        title: "React",
+        icon: SiReact,
+        color: "text-sky-400",
         description:
-          "Full-stack React framework for file-based routes, shared loaders, and shipping apps with TanStack Router at the center.",
+          "Component-based UI library for building interactive pages with hooks, state, and a declarative rendering model.",
+      },
+      {
+        title: "Vite",
+        icon: SiVite,
+        color: "text-violet-400",
+        description:
+          "Fast dev server and optimized production builds for modern front-end projects with TypeScript support.",
       },
       {
         title: "React Router",

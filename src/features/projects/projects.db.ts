@@ -7,7 +7,7 @@ import type { ProjectType } from "./projects.contract.types";
 export const PROJECTS: ProjectType[] = [
   {
     id: "whatsapp-product-catalog",
-    sortOrder: 1,
+    sortOrder: 0,
     featured: true,
     imgSrc: projectImagePath("whatsapp-product-catalog.png"),
     title: "WhatsApp Product Catalog",
@@ -15,12 +15,12 @@ export const PROJECTS: ProjectType[] = [
     repo: "https://github.com/Sulley-Sadick/whatsapp-product-catalog",
     description:
       "A product catalog built for a mobile-phone retailer. Visitors browse device listings with images and specifications, then place orders through integrated WhatsApp messaging—streamlining discovery and purchase without a separate checkout flow.",
-    categories: ["Web Development", "E-Commerce", "Mobile and Automation"],
+    categories: ["Web Development", "E-Commerce"],
     tags: ["JavaScript", "CSS", "HTML"],
   },
   {
     id: "weather-app",
-    sortOrder: 2,
+    sortOrder: 1,
     featured: true,
     imgSrc: projectImagePath("weather-app.png"),
     title: "Weather App",

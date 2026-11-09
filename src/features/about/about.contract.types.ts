@@ -1,9 +1,9 @@
 export type AboutDeveloperType = Readonly<{
   avatar1: string;
   avatar2: string;
-  firstName: "Sadick";
-  lastName: "Sulley";
-  name: "Sadick Sulley";
+  firstName: "Sulley";
+  lastName: "Sadick";
+  name: "Sulley Sadick";
   resume: string;
   email: string;
   phone: string;

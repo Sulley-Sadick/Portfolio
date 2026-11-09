@@ -11,7 +11,7 @@ export function HeroSection() {
   const developer = aboutService.getDeveloper();
 
   const { output: description, ref } = useTyping({
-    text: `Software developer who enjoys turning ideas into fast, responsive, and modern web experiences. I work mainly with React and TypeScript, and I care about clean interfaces, good user experiences, and building things that are practical and useful.
+    text: `Junior front-end developer open to client and freelance work—landing pages, catalog sites, and polished UI builds. I work mainly with React and TypeScript, ship projects with live demos and public repos, and focus on responsive, maintainable interfaces.
 `,
     whileInView: true,
     speedInSeconds: 0.2,

@@ -6,9 +6,9 @@ import type { AboutDeveloperType } from "./about.contract.types";
 export const DEVELOPER: AboutDeveloperType = Object.freeze({
   avatar1: avatar1Url,
   avatar2: avatar2Url,
-  firstName: "Sadick",
-  lastName: "Sulley",
-  name: "Sadick Sulley",
+  firstName: "Sulley",
+  lastName: "Sadick",
+  name: "Sulley Sadick",
   resume: socials.resume,
   email: socials.email,
   phone: socials.phone,
