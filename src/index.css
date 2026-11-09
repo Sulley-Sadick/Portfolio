@@ -111,6 +111,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   *,
   html,
   body {
@@ -159,5 +163,13 @@
 
   .section__title {
     @apply text-5xl font-bold;
+  }
+
+  .section-title {
+    @apply mb-8 text-center text-3xl font-bold md:text-5xl;
+  }
+
+  .card-surface {
+    @apply rounded-xl border border-neutral-secondary/10 bg-muted shadow-sm;
   }
 }
