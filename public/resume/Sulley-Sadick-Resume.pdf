@@ -1,0 +1,146 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 3221 >>
+stream
+BT
+/F1 9 Tf
+48 760 Td
+(Sulley Sadick) Tj
+0 -11 Td
+() Tj
+0 -11 Td
+(Junior Front-End Developer · Ghana \(open to remote\)  ) Tj
+0 -11 Td
+(GitHub: github.com/Sulley-Sadick · Portfolio: sulley-sadick.github.io/Portfolio  ) Tj
+0 -11 Td
+() Tj
+0 -11 Td
+() Tj
+0 -11 Td
+(Professional summary) Tj
+0 -11 Td
+() Tj
+0 -11 Td
+(Junior front-end developer focused on React, TypeScript, and responsive, accessible) Tj
+0 -11 Td
+(interfaces. I build and deploy real web apps through independent projects and ALX Africa’s) Tj
+0 -11 Td
+(frontend program, with emphasis on clean UI, maintainable components, and practical UX. Open) Tj
+0 -11 Td
+(to freelance and client work \(landing pages, product catalogs, small business sites\). No) Tj
+0 -11 Td
+(full-time industry role yet—delivery is backed by public repos and live demos.) Tj
+0 -11 Td
+() Tj
+0 -11 Td
+(Technical skills) Tj
+0 -11 Td
+() Tj
+0 -11 Td
+(Languages: HTML5, CSS3, JavaScript \(ES6+\), TypeScript  ) Tj
+0 -11 Td
+(Frontend: React, React Router, component-driven UI, responsive layout  ) Tj
+0 -11 Td
+(Styling: Tailwind CSS, modern CSS \(flex/grid\)  ) Tj
+0 -11 Td
+(Tooling: Git, GitHub, Vite, pnpm, ESLint, Prettier  ) Tj
+0 -11 Td
+(Integrations: REST APIs, browser geolocation, Supabase client \(data and contact flows\)) Tj
+0 -11 Td
+() Tj
+0 -11 Td
+(Projects) Tj
+0 -11 Td
+() Tj
+0 -11 Td
+(WhatsApp product catalog — JavaScript, HTML, CSS  ) Tj
+0 -11 Td
+(Product catalog for a mobile-phone retailer: browse listings with images and specs; order) Tj
+0 -11 Td
+(through integrated WhatsApp chat. Deployed on Vercel.) Tj
+0 -11 Td
+(Live: whatsapp-product-catalog.vercel.app · GitHub) Tj
+0 -11 Td
+() Tj
+0 -11 Td
+(Weather app — JavaScript, HTML, CSS  ) Tj
+0 -11 Td
+(Geolocation on load, location search, and clear presentation of temperature, humidity, wind,) Tj
+0 -11 Td
+(and forecast details. Mobile-friendly layout on Vercel.) Tj
+0 -11 Td
+(Live: weather-app-kappa-dun-38.vercel.app · GitHub) Tj
+0 -11 Td
+() Tj
+0 -11 Td
+(Experience & training) Tj
+0 -11 Td
+() Tj
+0 -11 Td
+(Independent projects — Front-End Developer · Remote · 2024–Present  ) Tj
+0 -11 Td
+(- Shipped retailer catalog and weather app with public GitHub repos and Vercel deployments.) Tj
+0 -11 Td
+(- Own full UI implementation: layout, interactions, API consumption, and deployment) Tj
+0 -11 Td
+(workflow.) Tj
+0 -11 Td
+() Tj
+0 -11 Td
+(ALX Africa — Frontend Development · Online · Sep 2025–Feb 2026  ) Tj
+0 -11 Td
+(- Intensive track: React, TypeScript, routing, state patterns, Git collaboration, responsive) Tj
+0 -11 Td
+(UI.) Tj
+0 -11 Td
+(- Applied sprint-style delivery and peer review to portfolio-grade work.) Tj
+0 -11 Td
+() Tj
+0 -11 Td
+(ALX Africa — Professional Foundations · Online · Jun 2025–Sep 2025  ) Tj
+0 -11 Td
+(- Remote teamwork, communication, accountability, and structured problem-solving.) Tj
+0 -11 Td
+() Tj
+0 -11 Td
+(Udemy — JavaScript: The Complete Guide \(Jonas Schmedtmann\) · Online · 2023–2024  ) Tj
+0 -11 Td
+(- Modern JS, DOM, async patterns; foundation for React and project work.) Tj
+0 -11 Td
+() Tj
+0 -11 Td
+(Education) Tj
+0 -11 Td
+() Tj
+0 -11 Td
+(Twifo Praso Senior High School — High School Diploma  ) Tj
+0 -11 Td
+([Twifo Praso, Ghana] · [2018]–[2021]) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000003514 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+3584
+%%EOF

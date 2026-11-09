@@ -12,7 +12,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "supabase:deploy-contact": "supabase functions deploy submit-contact && supabase functions deploy send-contact-email && supabase db push",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "resume:pdf": "node scripts/generate-resume-pdf.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.118.0",
