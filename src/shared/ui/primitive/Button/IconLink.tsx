@@ -14,7 +14,7 @@ import type {
 function shouldUseNativeAnchor(href: string | undefined): href is string {
   if (!href) return false;
   if (/^(https?:|mailto:|tel:)/i.test(href)) return true;
-  // Absolute paths to static files (e.g. /Portfolio/resume/... on GitHub Pages)
+  if (/\.pdf$/i.test(href) || /\/resume\//i.test(href)) return true;
   return href.startsWith("/") && /\.[a-z0-9]+$/i.test(href);
 }
 
