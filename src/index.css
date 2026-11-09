@@ -172,4 +172,12 @@
   .card-surface {
     @apply rounded-xl border border-neutral-secondary/10 bg-muted shadow-sm;
   }
+
+  .floating-dot-timeline {
+    @apply bg-accent absolute top-[8%] -left-7 size-3 rounded-full;
+  }
+
+  .timeline-view-container {
+    @apply bg-neutral absolute top-[2%] grid w-1 rounded-xl;
+  }
 }
