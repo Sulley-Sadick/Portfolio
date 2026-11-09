@@ -1,0 +1,72 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm run build
+        env:
+          VITE_BASE_PATH: /Portfolio/
+          VITE_APP_URL: ${{ secrets.VITE_APP_URL }}
+          VITE_GITHUB_LINK: ${{ secrets.VITE_GITHUB_LINK }}
+          VITE_WHATSAPP_LINK: ${{ secrets.VITE_WHATSAPP_LINK }}
+          VITE_EMAIL_LINK: ${{ secrets.VITE_EMAIL_LINK }}
+          VITE_RESUME_LINK: ${{ secrets.VITE_RESUME_LINK }}
+          VITE_LINKEDIN_LINK: ${{ secrets.VITE_LINKEDIN_LINK }}
+          VITE_INSTAGRAM_LINK: ${{ secrets.VITE_INSTAGRAM_LINK }}
+          VITE_FACEBOOK_LINK: ${{ secrets.VITE_FACEBOOK_LINK }}
+          VITE_PHONE_NUMBER: ${{ secrets.VITE_PHONE_NUMBER }}
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_PUBLISHER_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHER_KEY }}
+          VITE_SERVER_URI: ${{ secrets.VITE_SERVER_URI }}
+
+      - name: SPA fallback for GitHub Pages
+        run: cp dist/index.html dist/404.html
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
