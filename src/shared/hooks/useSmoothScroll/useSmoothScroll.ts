@@ -38,7 +38,7 @@ export function useSmoothScroll({
     (sectionId: string) => {
       if (pathname === homePath) {
         scrollToSection(sectionId);
-        window.history.replaceState(null, "", `${homePath}#${sectionId}`);
+        navigate({ pathname: homePath, hash: sectionId }, { replace: true });
         return;
       }
 
