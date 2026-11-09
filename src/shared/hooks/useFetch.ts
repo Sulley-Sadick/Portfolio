@@ -87,8 +87,6 @@ export function useFetch<T>({
         if (!result.success) {
           setResponse({ error: true, message: result.error });
         }
-
-        setIsLoading(false);
       };
     },
     [clearFormState, setResponse],
