@@ -12,7 +12,7 @@ export function ProjectsSection() {
     <div className="bg-muted">
       <section id="projects" className="section scroll-mt-120">
         <h2 className="section-title">
-          {projectsSectionContent.titleLead}{" "}
+          {projectsSectionContent.titleLead}
           <AccentText as="span">{projectsSectionContent.titleAccent}</AccentText>
         </h2>
 
