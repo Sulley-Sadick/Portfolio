@@ -30,31 +30,19 @@ export function useFetch<T>({
     if (ref instanceof HTMLElement) containerRef.current = ref;
   }, []);
 
-  const setResponse = useCallback(
-    ({ message, error, success }: UpdateProps) => {
-      setMessage(fe(message));
-      setError(!!error);
-      setSuccess(!!success);
-
-      const ctn = containerRef.current;
-
-      if (!(ctn instanceof HTMLElement)) return;
-
-      ctn.classList.add("scroll-mt-120");
-      ctn.scrollIntoView({ behavior: "smooth" });
-      setIsLoading(false);
-    },
-    [],
-  );
-
   const clearFormState = useCallback(() => {
+    const timeoutId = timeoutRef.current;
+    if (timeoutId) clearTimeout(timeoutId);
+    timeoutRef.current = null;
+
     setMessage("");
     setIsLoading(false);
     setError(false);
+    setSuccess(false);
   }, []);
 
   const autoClearFormState = useCallback(
-    (delayInSecs = 7) => {
+    (delayInSecs = 6) => {
       const timeoutId = timeoutRef.current;
 
       if (timeoutId) clearTimeout(timeoutId);
@@ -64,20 +52,41 @@ export function useFetch<T>({
     [clearFormState],
   );
 
+  const setResponse = useCallback(
+    ({ message, error, success }: UpdateProps) => {
+      setMessage(fe(message));
+      setError(!!error);
+      setSuccess(!!success);
+      setIsLoading(false);
+      autoClearFormState(success ? 5 : 6);
+    },
+    [autoClearFormState],
+  );
+
+  useLayoutEffect(() => {
+    if (!message) return;
+
+    const ctn = containerRef.current;
+    if (!(ctn instanceof HTMLElement)) return;
+
+    ctn.classList.add("scroll-mt-120");
+    ctn.scrollIntoView({ behavior: "smooth" });
+  }, [message]);
+
   const submitRequest = useCallback(
-    (callback: (data: T) => Promise<void>) => {
+    (callback: (data: T, event?: SubmitEvent) => Promise<void>) => {
       return async function (e?: SubmitEvent) {
         e?.preventDefault();
         clearFormState();
         setIsLoading(true);
 
         const result = await tryCatch(
-          callback(formDataRef.current as unknown as T),
+          callback(formDataRef.current as unknown as T, e),
         );
 
         if (!result.success) {
           setResponse({ error: true, message: result.error });
-        } else setSuccess(true);
+        }
 
         setIsLoading(false);
       };

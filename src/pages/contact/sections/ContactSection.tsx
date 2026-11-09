@@ -22,6 +22,7 @@ export function ContactSection({
     onSubmit,
     register,
     isLoading,
+    msgCtnRef,
     formState: { message, error, success },
   } = useContact();
 
@@ -57,7 +58,7 @@ export function ContactSection({
         </h3>
 
         {message && (
-          <FeedbackCard success={success} error={error}>
+          <FeedbackCard ref={msgCtnRef} success={success} error={error} className="my-5">
             {message}
           </FeedbackCard>
         )}
