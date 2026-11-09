@@ -11,6 +11,13 @@ import type {
   StyleIconLinkProps,
 } from "./button.types";
 
+function shouldUseNativeAnchor(href: string | undefined): href is string {
+  if (!href) return false;
+  if (/^(https?:|mailto:|tel:)/i.test(href)) return true;
+  // Absolute paths to static files (e.g. /Portfolio/resume/... on GitHub Pages)
+  return href.startsWith("/") && /\.[a-z0-9]+$/i.test(href);
+}
+
 export function Link({
   children,
   className,
@@ -25,25 +32,30 @@ export function Link({
   hover,
   ...props
 }: LinkProps) {
-  return (
-    <RouterLink
-      to={href as never}
-      className={cn(
-        buttonVariants({
-          pad,
-          rad,
-          x,
-          y,
-          w,
-          animation,
-          hover,
-          className,
-          variant,
-        }),
-      )}
+  const linkClassName = cn(
+    buttonVariants({
+      pad,
+      rad,
+      x,
+      y,
+      w,
+      animation,
+      hover,
+      className,
+      variant,
+    }),
+  );
 
-      {...props}
-    >
+  if (shouldUseNativeAnchor(href)) {
+    return (
+      <a href={href} className={linkClassName} {...props}>
+        {children}
+      </a>
+    );
+  }
+
+  return (
+    <RouterLink to={href ?? ""} className={linkClassName} {...props}>
       {children}
     </RouterLink>
   );
