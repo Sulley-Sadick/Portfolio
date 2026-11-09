@@ -1,15 +1,20 @@
 import { AnimatePresence, motion, type MotionProps } from "motion/react";
 import { useLocation } from "react-router";
-import { type ComponentProps } from "react";
+import { type ComponentProps, type MouseEvent } from "react";
 
 import type { FramerAnimatePositionProps } from "../../ui/Framer/framer.types";
 import { Backdrop } from "../../ui/primitive/Backdrop";
 import { FramerAnimatePosition } from "../../ui/Framer/components/FramerAnimatePosition";
 import { cn } from "../../utils/cn";
-import { NAVLINKS } from "./constants";
+import { NAVLINKS, type Navlink } from "./constants";
 import { Link, StyledDotLink } from "../../ui/primitive/Button/IconLink";
 import { motionVariants } from "../../ui/Framer/utils/motion";
 import { routes } from "../../routes/routes";
+import {
+  isHomeSectionActive,
+  isHomeTopActive,
+  useSmoothScroll,
+} from "../../hooks/useSmoothScroll/useSmoothScroll";
 
 type MobileNavbarProps = {
   isMenuOpen: boolean;
@@ -53,8 +58,8 @@ export function MobileNavbar({
                 <ul className="grid h-fit gap-y-6">
                   {NAVLINKS.map((navlink) => (
                     <NavLink
-                      key={navlink.path}
-                      onClick={close}
+                      key={navlink.title}
+                      onNavigate={close}
                       className="bg-transparent py-2"
                       {...navlink}
                     />
@@ -86,26 +91,53 @@ export const DesktopNavbar = function ({
   return (
     <motion.ul className={cn("hidden lg:flex lg:gap-1", className)} {...props}>
       {NAVLINKS.map((navlink) => (
-        <NavLink key={navlink.path} {...navlink} />
+        <NavLink key={navlink.title} {...navlink} />
       ))}
     </motion.ul>
   );
 };
 
+type NavLinkProps = Navlink &
+  MotionProps &
+  ComponentProps<"li"> & {
+    onNavigate?: () => void;
+  };
+
 const NavLink = function ({
   className,
   title,
   path,
+  sectionId,
+  onNavigate,
   ...props
-}: { title: string; path: string } & MotionProps & ComponentProps<"li">) {
-  const { pathname } = useLocation();
+}: NavLinkProps) {
+  const { pathname, hash } = useLocation();
+  const { goToHomeSection, goToHomeTop } = useSmoothScroll();
 
-  const active = pathname === path;
+  const isHomeLink = path === routes.home && !sectionId;
+
+  const active = sectionId
+    ? isHomeSectionActive(pathname, hash, sectionId)
+    : isHomeLink
+      ? isHomeTopActive(pathname, hash)
+      : pathname === path;
+
+  const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (sectionId) {
+      event.preventDefault();
+      goToHomeSection(sectionId);
+    } else if (isHomeLink && pathname === routes.home) {
+      event.preventDefault();
+      goToHomeTop();
+    }
+    onNavigate?.();
+  };
 
   return (
     <li {...props}>
       <Link
         href={path}
+        onClick={handleClick}
         hover="accent"
         x="center"
         y="center"
