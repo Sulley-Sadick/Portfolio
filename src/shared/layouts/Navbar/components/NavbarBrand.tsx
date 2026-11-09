@@ -12,7 +12,7 @@ export function NavbarBrand() {
       <Image
         alt={developer.name}
         url={developer.avatar2}
-        className="relative size-10 shrink-0 overflow-hidden rounded-full border border-muted-secondary p-0.5"
+        className="border-muted-secondary relative size-10 shrink-0 overflow-hidden rounded-full border p-0.5"
         imageClassName="object-cover object-[center_30%]"
       />
       <div>
