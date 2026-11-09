@@ -1,6 +1,6 @@
 import { Link as RouterLink } from "react-router";
 import { IoMdArrowUp } from "react-icons/io";
-import { PiDotOutlineFill } from "react-icons/pi";
+import { GoDotFill } from "react-icons/go";
 
 import { cn } from "../../../utils/cn";
 import { buttonVariants } from "./components/Button";
@@ -58,7 +58,10 @@ export function IconLink({
 }: IconLinkProps) {
   return (
     <Link
-      className={cn("flex gap-x-1.5 rounded-lg", className)}
+      className={cn(
+        "group flex items-center justify-center gap-x-1.5 rounded-full",
+        className,
+      )}
       x="center"
       y="center"
       pad="lg"
@@ -89,13 +92,15 @@ export function StyledArrowLink({
 
 export function StyledDotLink({
   iconClassName,
+  variant = "ghost-light",
   ...props
 }: Omit<StyleIconLinkProps, "icon">) {
   return (
     <StyledIconLink
-      icon={PiDotOutlineFill}
+      icon={GoDotFill}
+      variant={variant}
       iconClassName={cn(
-        "size-2 rounded-full bg-muted fill-muted group-hover-animate-pulse",
+        "size-2 shrink-0 fill-current group-hover:animate-pulse",
         iconClassName,
       )}
       {...props}
