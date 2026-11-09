@@ -1,67 +1,40 @@
 import { withSupabase } from "npm:@supabase/server@1";
-import { Resend } from "npm:resend";
 
-type ContactMessageOptions = {
-  id: number;
-  name: string;
-  contact: string;
-  message: string;
-};
-
-type DatabaseWebhookPayload = {
-  type: "INSERT";
-  table: "contact_messages";
-  record: ContactMessageOptions;
-  old_record: null;
-};
-
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+import { sendContactNotification } from "../_shared/contact-notify.ts";
+import { parseContactInsertWebhook } from "../_shared/parse-contact-webhook.ts";
 
 export default {
   fetch: withSupabase({ auth: "secret" }, async (req) => {
+    if (req.method !== "POST") {
+      return Response.json({ message: "Method not allowed" }, { status: 405 });
+    }
+
+    let body: unknown;
+
     try {
-      const payload: DatabaseWebhookPayload = await req.json();
+      body = await req.json();
+    } catch {
+      return Response.json(
+        { message: "Invalid webhook payload" },
+        { status: 400 },
+      );
+    }
 
-      if (payload.type !== "INSERT" || payload.table !== "contact_messages")
-        return Response.json(
-          { error: "Unsupported webhooks" },
-          { status: 400 },
-        );
+    const payload = parseContactInsertWebhook(body);
 
-      const { id, name, message, contact } = payload.record;
+    if (!payload) {
+      return Response.json({ error: "Unsupported webhook" }, { status: 400 });
+    }
 
-      if (!name || !message || !contact)
-        return Response.json(
-          { status: 400 },
-          { error: "Missing contact message fields" },
-        );
-
-      const { data, error } = await resend.emails.send({
-        from: "onboarding@resend.dev",
-        to: "sulleysadick766@gmail.com",
-        subject: `New contact message from ${name}`,
-        text: `
-            New contact form  submission
-            Name: ${name}
-            Contact: ${contact}
-            Message: ${message}
-            MessageId: ${id}
-            `,
-      });
-
-      if (error) {
-        return Response.json(
-          { error: error ?? "Failed to send email" },
-          { status: 500 },
-        );
-      }
+    try {
+      const data = await sendContactNotification(payload.record);
 
       return Response.json({ success: true, emailId: data?.id });
     } catch (error) {
-      return Response.json(
-        { error: error ?? "Unable to process contact message" },
-        { status: 500 },
-      );
+      const message =
+        error instanceof Error ? error.message : "Unable to send contact email";
+
+      return Response.json({ error: message }, { status: 500 });
     }
   }),
 };

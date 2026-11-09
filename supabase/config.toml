@@ -1,4 +1,10 @@
 
+[functions.submit-contact]
+enabled = true
+verify_jwt = false
+import_map = "./functions/submit-contact/deno.json"
+entrypoint = "./functions/submit-contact/index.ts"
+
 [functions.send-contact-email]
 enabled = true
 verify_jwt = false
