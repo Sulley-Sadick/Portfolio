@@ -2,6 +2,7 @@ import { HeroSection } from "./sections/Hero";
 import { JourneySection } from "./sections/Journey";
 import { Mission } from "./sections/Mission";
 import { ProjectsSection } from "./sections/Projects";
+import { SkillsSection } from "./sections/Skills";
 
 export function HomePage() {
   return (
@@ -10,6 +11,7 @@ export function HomePage() {
       <Mission />
       <ProjectsSection />
       <JourneySection />
+      <SkillsSection />
     </main>
   );
 }
