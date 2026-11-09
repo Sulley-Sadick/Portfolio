@@ -3,16 +3,10 @@ import { useLocation } from "react-router";
 import { aboutService } from "../../features/about/about.service";
 import { SocialMediaLinks } from "../components/socialMediaLinks/SocialMediaLinks";
 import { useCurrentYear } from "../hooks/useCurrentYear";
-import {
-  homeSectionHref,
-  homeSections,
-  routes,
-  type HomeSectionId,
-} from "../routes/routes";
+import { routes } from "../routes/routes";
 import { Link } from "../ui/primitive/Button/IconLink";
 import { cn } from "../utils/cn";
 import {
-  isHomeSectionActive,
   isHomeTopActive,
   useSmoothScroll,
 } from "../hooks/useSmoothScroll/useSmoothScroll";
@@ -66,31 +60,17 @@ export function Footer() {
 type FooterRouteLink = {
   title: string;
   path: string;
-  sectionId?: HomeSectionId;
 };
 
 const NAVIGATIONS: FooterRouteLink[] = [
   { title: "Home", path: routes.home },
   { title: "Contact", path: routes.contact },
-  {
-    title: "Projects",
-    path: homeSectionHref(homeSections.projects),
-    sectionId: homeSections.projects,
-  },
   { title: "About", path: routes.about },
 ];
 
 function Navigations() {
   const { pathname, hash } = useLocation();
-  const { goToHomeSection, goToHomeTop } = useSmoothScroll();
-
-  const handleSectionClick = (
-    event: MouseEvent<HTMLAnchorElement>,
-    sectionId: HomeSectionId,
-  ) => {
-    event.preventDefault();
-    goToHomeSection(sectionId);
-  };
+  const { goToHomeTop } = useSmoothScroll();
 
   const handleHomeClick = (event: MouseEvent<HTMLAnchorElement>) => {
     if (pathname === routes.home) {
@@ -106,11 +86,9 @@ function Navigations() {
         {NAVIGATIONS.map((navigation) => {
           const isHomeNav = navigation.path === routes.home;
 
-          const active = navigation.sectionId
-            ? isHomeSectionActive(pathname, hash, navigation.sectionId)
-            : isHomeNav
-              ? isHomeTopActive(pathname, hash)
-              : navigation.path === pathname;
+          const active = isHomeNav
+            ? isHomeTopActive(pathname, hash)
+            : navigation.path === pathname;
 
           return (
             <li
@@ -123,14 +101,7 @@ function Navigations() {
               <Link
                 href={navigation.path}
                 pad="none"
-                onClick={
-                  navigation.sectionId
-                    ? (event) =>
-                        handleSectionClick(event, navigation.sectionId!)
-                    : isHomeNav
-                      ? handleHomeClick
-                      : undefined
-                }
+                onClick={isHomeNav ? handleHomeClick : undefined}
               >
                 <span>{navigation.title}</span>
               </Link>
@@ -161,16 +132,9 @@ function Services() {
 
 const RESOURCES: FooterRouteLink[] = [
   { title: "Resume", path: developer.resume },
-  {
-    title: "Projects",
-    path: homeSectionHref(homeSections.projects),
-    sectionId: homeSections.projects,
-  },
 ];
 
 function Resources() {
-  const { goToHomeSection } = useSmoothScroll();
-
   return (
     <div>
       <h4 className="mb-6 font-bold uppercase">Resources</h4>
@@ -182,14 +146,6 @@ function Resources() {
             key={resource.title}
             className="text-neutral-secondary hover:text-white hover:underline hover:decoration-white"
             pad="none"
-            onClick={
-              resource.sectionId
-                ? (event) => {
-                    event.preventDefault();
-                    goToHomeSection(resource.sectionId!);
-                  }
-                : undefined
-            }
           >
             <span>{resource.title}</span>
           </Link>
