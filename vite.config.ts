@@ -2,7 +2,7 @@ import react from "@vitejs/plugin-react";
 import { defineConfig, loadEnv, type Plugin } from "vite";
 import tailwindcss from "@tailwindcss/vite";
 
-const FALLBACK_SITE_URL = "https://sulley-sadick.github.io/Portfolio/";
+const FALLBACK_SITE_URL = "https://sulleysadick.dev/";
 
 function resolveSiteUrl(raw: string | undefined): string {
   const candidate = raw?.trim();

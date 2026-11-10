@@ -1,6 +1,6 @@
 /**
  * Build a URL for a file served from `public/`, respecting Vite `base`
- * (`/` locally, `/Portfolio/` on GitHub Pages).
+ * (`/` on sulleysadick.dev and in local dev).
  */
 export function publicAssetPath(relativePath: string): string {
   const base = import.meta.env.BASE_URL;

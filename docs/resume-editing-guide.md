@@ -8,7 +8,7 @@ Source file: [`resume.md`](./resume.md)
 2. Complete the **Education** section—remove the HTML comment and placeholders.
 3. Export to PDF (see below).
 4. Save as `public/resume/Sulley-Sadick-Resume.pdf`.
-5. Set `VITE_RESUME_LINK` to `resume/Sulley-Sadick-Resume.pdf` (or leave unset for default) in `.env` and GitHub **Actions secrets**; CI adds the `/Portfolio/` base. Redeploy after changes.
+5. Set `VITE_RESUME_LINK` to `resume/Sulley-Sadick-Resume.pdf` (or leave unset for default) in `.env` and GitHub **Actions secrets**. Redeploy after changes.
 
 ## Export to PDF
 

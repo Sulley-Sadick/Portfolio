@@ -36,7 +36,8 @@ jobs:
       - name: Build
         run: pnpm run build
         env:
-          VITE_BASE_PATH: /Portfolio/
+          # Custom domain sulleysadick.dev — assets and router live at site root (not /Portfolio/)
+          VITE_BASE_PATH: /
           VITE_APP_URL: ${{ secrets.VITE_APP_URL }}
           VITE_GITHUB_LINK: ${{ secrets.VITE_GITHUB_LINK }}
           VITE_WHATSAPP_LINK: ${{ secrets.VITE_WHATSAPP_LINK }}
