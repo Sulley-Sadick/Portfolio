@@ -1,7 +1,4 @@
-export const PROJECT_IDS = [
-  "whatsapp-product-catalog",
-  "weather-app",
-] as const;
+export const PROJECT_IDS = ["whatsapp-product-catalog", "weather-app"] as const;
 
 export type ProjectId = (typeof PROJECT_IDS)[number];
 

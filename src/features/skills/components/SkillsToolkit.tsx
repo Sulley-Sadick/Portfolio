@@ -10,9 +10,7 @@ type SkillsToolkitProps = Pick<ComponentProps<"section">, "className">;
 
 /** Full engineering toolkit — used on the About page (`#skills`). */
 export function SkillsToolkit({ className }: SkillsToolkitProps) {
-  const skillItems = skillsService
-    .find()
-    .flatMap((category) => category.items);
+  const skillItems = skillsService.find().flatMap((category) => category.items);
 
   return (
     <section

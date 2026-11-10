@@ -54,7 +54,8 @@ export function useMeasure<T>({
       const el = getNode(itemNode);
       if (!el) return;
 
-      const { width: rectWidth, height: rectHeight } = el.getBoundingClientRect();
+      const { width: rectWidth, height: rectHeight } =
+        el.getBoundingClientRect();
       const { offsetLeft, offsetTop } = el;
 
       setHeight(rectHeight);

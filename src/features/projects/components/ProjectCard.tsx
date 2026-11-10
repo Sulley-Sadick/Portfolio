@@ -28,7 +28,7 @@ export function ProjectCard({
   return (
     <li
       className={cn(
-        "group card-surface bg-muted grid transition-all hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5",
+        "group card-surface bg-muted hover:border-accent/30 hover:shadow-accent/5 grid transition-all hover:shadow-lg",
         className,
       )}
       {...props}
@@ -50,7 +50,7 @@ export function ProjectCard({
         <ProjectTags tags={tags} />
 
         <ProjectLinks
-          className="mt-4 border-t border-t-neutral-secondary/10"
+          className="border-t-neutral-secondary/10 mt-4 border-t"
           link={link}
           repo={repo}
         />

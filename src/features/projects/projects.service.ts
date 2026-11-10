@@ -14,8 +14,10 @@ function isAllCategories(
 }
 
 function compareProjects(a: ProjectType, b: ProjectType): number {
-  return (a.sortOrder ?? Number.MAX_SAFE_INTEGER) -
-    (b.sortOrder ?? Number.MAX_SAFE_INTEGER);
+  return (
+    (a.sortOrder ?? Number.MAX_SAFE_INTEGER) -
+    (b.sortOrder ?? Number.MAX_SAFE_INTEGER)
+  );
 }
 
 class ProjectsService implements IProjectsService {
@@ -47,9 +49,7 @@ class ProjectsService implements IProjectsService {
   }
 
   getCategoryFilters(): ProjectCategory[] {
-    return [
-      ...new Set(this.projects.flatMap((project) => project.categories)),
-    ];
+    return [...new Set(this.projects.flatMap((project) => project.categories))];
   }
 }
 

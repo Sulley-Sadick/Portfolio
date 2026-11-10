@@ -71,11 +71,7 @@ function JourneyCardHeader({
     >
       <div className="mx-auto sm:mx-[unset]">
         {logo ? (
-          <Image
-            url={logo}
-            alt={organization}
-            className="m-auto size-10"
-          />
+          <Image url={logo} alt={organization} className="m-auto size-10" />
         ) : (
           <LuBriefcase className="m-auto size-10" aria-hidden />
         )}
@@ -115,10 +111,7 @@ function JourneyCardContent({
       {...props}
       ref={ref}
       title={content}
-      className={cn(
-        "text-neutral-secondary line-clamp-3 text-sm",
-        className,
-      )}
+      className={cn("text-neutral-secondary line-clamp-3 text-sm", className)}
     >
       {content}
     </div>

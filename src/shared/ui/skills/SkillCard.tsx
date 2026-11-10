@@ -18,7 +18,7 @@ export function SkillCard({
     <li
       {...props}
       className={cn(
-        "card-surface flex flex-col gap-3 rounded-none p-4 hover:bg-muted-secondary/20",
+        "card-surface hover:bg-muted-secondary/20 flex flex-col gap-3 rounded-none p-4",
         className,
       )}
     >

@@ -37,13 +37,11 @@ export default {
     }
 
     // Row insert only; contact email is sent by DB trigger → send-contact-email.
-    const { error } = await ctx.supabaseAdmin
-      .from("contact_messages")
-      .insert({
-        name: parsed.data.name,
-        contact: parsed.data.contact,
-        message: parsed.data.message,
-      });
+    const { error } = await ctx.supabaseAdmin.from("contact_messages").insert({
+      name: parsed.data.name,
+      contact: parsed.data.contact,
+      message: parsed.data.message,
+    });
 
     if (error) {
       return Response.json(

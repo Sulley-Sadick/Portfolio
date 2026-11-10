@@ -78,46 +78,47 @@ export function useContact() {
     data: { name: "", message: "", contact: "" },
   });
 
-  const onSubmit = handleSubmit(
-    async function sendMessage(payload: ContactDataType, event?: SubmitEvent) {
-      const form = event?.currentTarget;
-      const honeypot =
-        form instanceof HTMLFormElement
-          ? String(new FormData(form).get("honeypot") ?? "")
-          : (payload.honeypot ?? "");
-      const parsed = contactValiator.safeParse({ ...payload, honeypot });
+  const onSubmit = handleSubmit(async function sendMessage(
+    payload: ContactDataType,
+    event?: SubmitEvent,
+  ) {
+    const form = event?.currentTarget;
+    const honeypot =
+      form instanceof HTMLFormElement
+        ? String(new FormData(form).get("honeypot") ?? "")
+        : (payload.honeypot ?? "");
+    const parsed = contactValiator.safeParse({ ...payload, honeypot });
 
-      if (!parsed.success) {
-        const tripped = parsed.error.issues.some(
-          (issue) => issue.path[0] === "honeypot",
-        );
+    if (!parsed.success) {
+      const tripped = parsed.error.issues.some(
+        (issue) => issue.path[0] === "honeypot",
+      );
 
-        if (tripped) {
-          setResponse({ message: "Data sent successfully", success: true });
-          reset({ contact: "", message: "", name: "" });
-          return;
-        }
-
-        const message =
-          parsed.error.issues[0]?.message ?? "Invalid contact message";
-        throw new Error(message);
+      if (tripped) {
+        setResponse({ message: "Data sent successfully", success: true });
+        reset({ contact: "", message: "", name: "" });
+        return;
       }
 
-      const { error } = await supabase.functions.invoke("submit-contact", {
-        body: {
-          name: parsed.data.name,
-          contact: parsed.data.contact,
-          message: parsed.data.message,
-          honeypot: parsed.data.honeypot ?? "",
-        },
-      });
+      const message =
+        parsed.error.issues[0]?.message ?? "Invalid contact message";
+      throw new Error(message);
+    }
 
-      if (error) throw await contactFunctionError(error);
+    const { error } = await supabase.functions.invoke("submit-contact", {
+      body: {
+        name: parsed.data.name,
+        contact: parsed.data.contact,
+        message: parsed.data.message,
+        honeypot: parsed.data.honeypot ?? "",
+      },
+    });
 
-      setResponse({ message: "Data sent successfully", success: true });
-      reset({ contact: "", message: "", name: "" });
-    },
-  );
+    if (error) throw await contactFunctionError(error);
+
+    setResponse({ message: "Data sent successfully", success: true });
+    reset({ contact: "", message: "", name: "" });
+  });
 
   return { register, formState, onSubmit, isLoading, msgCtnRef };
 }

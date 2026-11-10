@@ -1,9 +1,7 @@
 import type { ComponentType } from "react";
 import type { IconType } from "react-icons";
 
-export type SkillIcon =
-  | IconType
-  | ComponentType<{ className?: string }>;
+export type SkillIcon = IconType | ComponentType<{ className?: string }>;
 
 export type SkillItemType = {
   title: string;

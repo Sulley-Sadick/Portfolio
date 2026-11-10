@@ -18,7 +18,10 @@ const plain = md
   .trim();
 
 function escapePdfText(line) {
-  return line.replace(/\\/g, "\\\\").replace(/\(/g, "\\(").replace(/\)/g, "\\)");
+  return line
+    .replace(/\\/g, "\\\\")
+    .replace(/\(/g, "\\(")
+    .replace(/\)/g, "\\)");
 }
 
 function wrapLines(text, maxLen = 92) {

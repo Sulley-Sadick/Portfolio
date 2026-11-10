@@ -58,7 +58,12 @@ export function ContactSection({
         </h3>
 
         {message && (
-          <FeedbackCard ref={msgCtnRef} success={success} error={error} className="my-5">
+          <FeedbackCard
+            ref={msgCtnRef}
+            success={success}
+            error={error}
+            className="my-5"
+          >
             {message}
           </FeedbackCard>
         )}
