@@ -9,6 +9,7 @@ import {
   SiPnpm,
   SiReact,
   SiReactrouter,
+  SiSupabase,
   SiTailwindcss,
   SiTypescript,
   SiVite,
@@ -66,6 +67,19 @@ export const SKILLS: SkillType[] = [
         color: "text-sky-600",
         description:
           "Utility classes for rapid layout, spacing, and theme-consistent styling in components.",
+      },
+    ],
+  },
+  {
+    featured: true,
+    category: "Integrations & Data",
+    items: [
+      {
+        title: "Supabase",
+        icon: SiSupabase,
+        color: "text-emerald-400",
+        description:
+          "Auth, Postgres, and Edge Functions for contact submissions and client-side data access in production apps.",
       },
     ],
   },
