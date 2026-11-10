@@ -11,7 +11,7 @@ export function HeroSection() {
   const developer = aboutService.getDeveloper();
 
   const { output: description, ref } = useTyping({
-    text: `Junior front-end developer open to client and freelance work—landing pages, catalog sites, and polished UI builds. I work mainly with React and TypeScript, ship projects with live demos and public repos, and focus on responsive, maintainable interfaces.
+    text: `Front-end developer who builds and ships production-oriented web applications for clients and everyday users. I work with HTML, CSS, JavaScript, TypeScript, and React—responsive interfaces, API-backed features, and deployments you can review on GitHub and live hosts. I focus on clear UX, accessible markup, and maintainable code from first build through release.
 `,
     whileInView: true,
     speedInSeconds: 0.2,
@@ -28,7 +28,7 @@ export function HeroSection() {
       </Pill>
       <section className="section grid w-full grid-rows-[auto_auto] md:grid-cols-2 md:grid-rows-1">
         <div className="mt-6 h-fit">
-          <h1 className="font-finlandica text-7xl font-bold md:text-6xl">
+          <h1 className="font-finlandica text-6xl font-bold">
             Front-<AccentText>End</AccentText> <br /> Develop
             <AccentText>er</AccentText>
           </h1>
