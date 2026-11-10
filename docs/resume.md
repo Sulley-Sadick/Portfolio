@@ -1,7 +1,7 @@
 # Sulley Sadick
 
 **Junior Front-End Developer** · Ghana (open to remote)  
-GitHub: [github.com/Sulley-Sadick](https://github.com/Sulley-Sadick) · Portfolio: [sulley-sadick.github.io/Portfolio](https://sulley-sadick.github.io/Portfolio/)  
+GitHub: [github.com/Sulley-Sadick](https://github.com/Sulley-Sadick) · Portfolio: [sulley-sadick.github.io/Portfolio](https://sulley-sadick.github.io/Portfolio/)
 <!-- Before export: add email, phone, and LinkedIn to match your .env (VITE_*_LINK). -->
 
 ## Professional summary
@@ -28,18 +28,22 @@ Live: [weather-app-kappa-dun-38.vercel.app](https://weather-app-kappa-dun-38.ver
 
 ## Experience & training
 
-**Independent projects — Front-End Developer** · Remote · 2024–Present  
-- Shipped retailer catalog and weather app with public GitHub repos and Vercel deployments.  
+**Independent projects — Front-End Developer** · Remote · 2024–Present
+
+- Shipped retailer catalog and weather app with public GitHub repos and Vercel deployments.
 - Own full UI implementation: layout, interactions, API consumption, and deployment workflow.
 
-**ALX Africa — Frontend Development** · Online · Sep 2025–Feb 2026  
-- Intensive track: React, TypeScript, routing, state patterns, Git collaboration, responsive UI.  
+**ALX Africa — Frontend Development** · Online · Sep 2025–Feb 2026
+
+- Intensive track: React, TypeScript, routing, state patterns, Git collaboration, responsive UI.
 - Applied sprint-style delivery and peer review to portfolio-grade work.
 
-**ALX Africa — Professional Foundations** · Online · Jun 2025–Sep 2025  
+**ALX Africa — Professional Foundations** · Online · Jun 2025–Sep 2025
+
 - Remote teamwork, communication, accountability, and structured problem-solving.
 
-**Udemy — JavaScript: The Complete Guide (Jonas Schmedtmann)** · Online · 2023–2024  
+**Udemy — JavaScript: The Complete Guide (Jonas Schmedtmann)** · Online · 2023–2024
+
 - Modern JS, DOM, async patterns; foundation for React and project work.
 
 ## Education
