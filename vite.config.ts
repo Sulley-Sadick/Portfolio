@@ -84,9 +84,11 @@ export default defineConfig(({ mode }) => {
         name: "html-seo-placeholders",
         transformIndexHtml(html) {
           const siteRoot = siteUrl.replace(/\/$/, "");
+          const baseUrl = base.endsWith("/") ? base : `${base}/`;
           return html
             .replaceAll("%SITE_URL%", siteRoot)
-            .replaceAll("%OG_IMAGE%", ogImage);
+            .replaceAll("%OG_IMAGE%", ogImage)
+            .replaceAll("%BASE_URL%", baseUrl);
         },
       },
     ],

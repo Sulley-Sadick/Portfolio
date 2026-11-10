@@ -12,7 +12,11 @@ function upsertMeta(attr: MetaAttr, key: string, content: string) {
   element.setAttribute("content", content);
 }
 
-function upsertLink(rel: string, href: string, extra?: Record<string, string>) {
+export function upsertLink(
+  rel: string,
+  href: string,
+  extra?: Record<string, string>,
+) {
   if (!href) return;
   let element = document.head.querySelector<HTMLLinkElement>(`link[rel="${rel}"]`);
   if (!element) {

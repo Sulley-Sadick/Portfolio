@@ -8,7 +8,8 @@ import {
   siteKeywords,
   absoluteRouteUrl,
 } from "../../config/seo";
-import { applyMetaTags } from "./metaTags";
+import { publicAssetPath } from "../utils/publicAssetPath";
+import { applyMetaTags, upsertLink } from "./metaTags";
 
 type SeoHeadProps = {
   pathname: string;
@@ -28,6 +29,10 @@ export function SeoHead({ pathname }: SeoHeadProps) {
       siteName: SITE_NAME,
       keywords: siteKeywords(),
     });
+
+    const faviconHref = publicAssetPath("favicon.svg");
+    upsertLink("icon", faviconHref, { type: "image/svg+xml" });
+    upsertLink("apple-touch-icon", faviconHref);
 
     if (verification) {
       let meta = document.head.querySelector<HTMLMetaElement>(
