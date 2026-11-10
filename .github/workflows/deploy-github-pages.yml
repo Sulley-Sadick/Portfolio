@@ -49,6 +49,7 @@ jobs:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_PUBLISHER_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHER_KEY }}
           VITE_SERVER_URI: ${{ secrets.VITE_SERVER_URI }}
+          VITE_GOOGLE_SITE_VERIFICATION: ${{ secrets.VITE_GOOGLE_SITE_VERIFICATION }}
 
       - name: SPA fallback for GitHub Pages
         run: cp dist/index.html dist/404.html
