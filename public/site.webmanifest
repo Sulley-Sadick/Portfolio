@@ -1,0 +1,18 @@
+{
+  "name": "Sulley Sadick — Front-End Developer Portfolio",
+  "short_name": "Sulley Sadick",
+  "description": "Front-end developer portfolio: projects, skills, journey, and contact.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#53dd6c",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
