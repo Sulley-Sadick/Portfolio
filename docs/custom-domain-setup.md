@@ -18,7 +18,7 @@ After updating, push to `main` or re-run **Deploy to GitHub Pages**.
 
 The verification meta tag lives in **`index.html`** (static HTML). Setting only `VITE_GOOGLE_SITE_VERIFICATION` was not enough before, because an earlier version injected the tag with JavaScript after load — Google’s verifier reads the first HTML response, not the React bundle.
 
-Optional: keep the same token in the `VITE_GOOGLE_SITE_VERIFICATION` secret so CI can replace the tag at build time when the token changes.
+Do **not** put the full `<meta …>` in `VITE_GOOGLE_SITE_VERIFICATION` — that broke builds by nesting HTML inside `content=""`. The token lives in `index.html` only; remove or fix the secret if it contains the whole tag.
 
 ## Namecheap + GitHub Pages
 

@@ -85,19 +85,10 @@ export default defineConfig(({ mode }) => {
         transformIndexHtml(html) {
           const siteRoot = siteUrl.replace(/\/$/, "");
           const baseUrl = base.endsWith("/") ? base : `${base}/`;
-          const verification = env.VITE_GOOGLE_SITE_VERIFICATION?.trim();
-          let out = html
+          return html
             .replaceAll("%SITE_URL%", siteRoot)
             .replaceAll("%OG_IMAGE%", ogImage)
             .replaceAll("%BASE_URL%", baseUrl);
-          if (verification) {
-            const meta = `<meta name="google-site-verification" content="${verification}" />`;
-            out = out.replace(
-              /<meta\s+name="google-site-verification"[^>]*\/?>/i,
-              meta,
-            );
-          }
-          return out;
         },
       },
     ],
