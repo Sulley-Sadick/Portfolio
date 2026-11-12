@@ -14,6 +14,12 @@ Keep existing secrets (`VITE_SUPABASE_URL`, social links, etc.) unchanged.
 
 After updating, push to `main` or re-run **Deploy to GitHub Pages**.
 
+## Google Search Console (HTML tag)
+
+The verification meta tag lives in **`index.html`** (static HTML). Setting only `VITE_GOOGLE_SITE_VERIFICATION` was not enough before, because an earlier version injected the tag with JavaScript after load — Google’s verifier reads the first HTML response, not the React bundle.
+
+Optional: keep the same token in the `VITE_GOOGLE_SITE_VERIFICATION` secret so CI can replace the tag at build time when the token changes.
+
 ## Namecheap + GitHub Pages
 
 - **Advanced DNS:** four `A` records on `@` to GitHub IPs; `www` CNAME → `sulley-sadick.github.io`
