@@ -3,7 +3,7 @@
 -- One-time per project (Supabase SQL Editor), store the service role key in Vault:
 --   select vault.create_secret('<YOUR_SERVICE_ROLE_KEY>', 'contact_webhook_service_role_key');
 --
--- Edge function secrets (CLI): RESEND_API_KEY, optional RESEND_FROM, CONTACT_EMAIL_TO
+-- Edge function secrets (CLI): RESEND_API_KEY, RESEND_FROM (e.g. Sulley Sadick <contact@sulleysadick.dev>), CONTACT_EMAIL_TO
 
 create extension if not exists pg_net with schema extensions;
 

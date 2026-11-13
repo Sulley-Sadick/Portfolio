@@ -17,7 +17,9 @@ function readNotifyConfig(): ContactNotifyConfig {
 
   return {
     apiKey,
-    from: Deno.env.get("RESEND_FROM") ?? "onboarding@resend.dev",
+    from:
+      Deno.env.get("RESEND_FROM") ??
+      "Sulley Sadick <contact@sulleysadick.dev>",
     to: Deno.env.get("CONTACT_EMAIL_TO") ?? "sulleysadick766@gmail.com",
   };
 }

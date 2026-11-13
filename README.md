@@ -169,6 +169,7 @@ Submit `https://sulleysadick.dev/sitemap.xml` after deploy. The ownership meta t
 - Client: `src/libs/supabase/supabase-client.ts`
 - Edge Functions: `supabase/functions/submit-contact`, `send-contact-email`
 - Deploy: `pnpm supabase:deploy-contact` (Supabase CLI + linked project)
+- Custom sender domain: **`docs/resend-domain-setup.md`** (Resend + Namecheap DNS + Supabase secrets)
 
 Do not commit real API keys; use `.env` locally and GitHub secrets in CI.
 
