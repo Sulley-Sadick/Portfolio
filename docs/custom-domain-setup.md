@@ -25,3 +25,4 @@ Do **not** put the full `<meta …>` in `VITE_GOOGLE_SITE_VERIFICATION` — that
 - **Advanced DNS:** four `A` records on `@` to GitHub IPs; `www` CNAME → `sulley-sadick.github.io`
 - **Redirect Domain:** remove apex → www redirect
 - **GitHub:** Portfolio repo → Settings → Pages → custom domain `sulleysadick.dev` → Enforce HTTPS
+- **GitHub Pages source:** must be **GitHub Actions** (not “Deploy from branch / main”). Serving the repo root deploys raw `index.html` with `%BASE_URL%` and `/src/main.tsx`, which breaks the live site.
