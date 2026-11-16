@@ -1,5 +1,5 @@
 import { DEVELOPER } from "../features/about/developer.db";
-import { publicUrls } from "./publicUrls";
+import { canonicalRouteUrl } from "./canonicalUrl";
 import { socials } from "./socials";
 import { getEnv } from "./utils/getEnv";
 import { publicAssetPath } from "../shared/utils/publicAssetPath";
@@ -58,22 +58,15 @@ export function getPageSeo(pathname: string): PageSeoConfig {
   return PAGE_SEO[getPageSeoKey(pathname)];
 }
 
-/** Absolute URL for a route (`/`, `/about`, …), using `VITE_APP_URL`. */
+/** Absolute URL for a route (`/`, `/about`, …), using canonical www host. */
 export function absoluteRouteUrl(pathname: string): string {
-  const segment = pathname.replace(/^\//, "");
-  const base = publicUrls.appUrl.endsWith("/")
-    ? publicUrls.appUrl
-    : `${publicUrls.appUrl}/`;
-  if (!segment) {
-    return base;
-  }
-  return new URL(segment, base).href;
+  return canonicalRouteUrl(pathname);
 }
 
 /** Absolute URL for a file under `public/`. */
 export function absolutePublicUrl(relativePath: string): string {
   const assetPath = publicAssetPath(relativePath);
-  const origin = new URL(publicUrls.appUrl).origin;
+  const origin = canonicalRouteUrl("/").replace(/\/$/, "");
   return `${origin}${assetPath.startsWith("/") ? assetPath : `/${assetPath}`}`;
 }
 

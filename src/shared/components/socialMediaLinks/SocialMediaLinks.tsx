@@ -1,6 +1,6 @@
 import type { ComponentProps } from "react";
 import {
-  contactService,
+  CONTACTLINKS,
   type SocialMediaProps,
 } from "../../../features/contact";
 import { motionVariants } from "../../ui/Framer/utils/motion";
@@ -14,7 +14,7 @@ const socialMediaLinksVariants = motionVariants({
 });
 
 export function SocialMediaLinks({ className }: ComponentProps<"div">) {
-  const socials = contactService.socials();
+  const socials = CONTACTLINKS;
 
   return (
     <FramerAnimatePosition

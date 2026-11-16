@@ -5,12 +5,14 @@ type ImageProps = {
   alt: string;
   url: string;
   imageClassName?: string;
+  priority?: boolean;
 } & ComponentProps<"div">;
 
 export function Image({
   alt,
   url,
   imageClassName,
+  priority = false,
   className,
   children,
   ...props
@@ -23,8 +25,10 @@ export function Image({
       <img
         src={url}
         alt={alt}
-        sizes="100%"
-        loading="lazy"
+        sizes="(max-width: 768px) 80vw, 400px"
+        loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : "auto"}
+        decoding={priority ? "sync" : "async"}
         className={cn(
           "absolute inset-0 size-full rounded-full object-contain",
           imageClassName,

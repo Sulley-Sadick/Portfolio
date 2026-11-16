@@ -49,6 +49,7 @@ export function HeroSection() {
               <Image
                 url={developer.avatar1}
                 alt="Mr. Sulley Sadick image"
+                priority
                 className="relative z-10 mx-auto h-100 p-1 transition-transform"
                 imageClassName="transition-all duration-400 rounded-full"
               />

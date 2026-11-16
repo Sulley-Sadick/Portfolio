@@ -2,57 +2,14 @@
 
 @source inline("scroll-mt-120");
 
-/* POPPINS FONTS */
-@font-face {
-  font-family: "Poppins";
-  src: url("../src/assets/fonts/Poppins-Regular.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Poppins";
-  src: url("../src/assets/fonts/Poppins-Medium.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Poppins";
-  src: url("../src/assets/fonts/Poppins-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-}
-
-/*  INTER FONTS */
-@font-face {
-  font-family: "Inter";
-  src: url("../src/assets/fonts/Inter_18pt-Regular.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("../src/assets/fonts/Inter_28pt-Medium.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("../src/assets/fonts/Inter_18pt-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-}
-
-/*  FINLANDICAHEADLINE FONTS*/
+/* FINLANDICA HEADLINE — only family used in the UI */
 @font-face {
   font-family: "Finlandica Headline";
   src: url("../src/assets/fonts/FinlandicaHeadline-Regular.ttf")
     format("truetype");
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -61,6 +18,7 @@
     format("truetype");
   font-weight: 600;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -68,12 +26,11 @@
   src: url("../src/assets/fonts/FinlandicaHeadline-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
 :root {
   /* FONTS */
-  --font-poppins: "Poppins", sans-serif;
-  --font-inter: "Inter", sans-serif;
   --font-finlandica: "Finlandica Headline", sans-serif;
 
   /* COLORS */
@@ -93,8 +50,6 @@
 
 @theme inline {
   /* FONTS */
-  --font-poppins: var(--font-poppins);
-  --font-inter: var(--font-inter);
   --font-finlandica: var(--font-finlandica);
 
   /* COLORS */
