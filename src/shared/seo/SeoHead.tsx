@@ -7,8 +7,8 @@ import {
   siteKeywords,
   absoluteRouteUrl,
 } from "../../config/seo";
-import { publicAssetPath } from "../utils/publicAssetPath";
-import { applyMetaTags, upsertLink } from "./metaTags";
+import { applyBrandHeadLinks } from "./brandHeadLinks";
+import { applyMetaTags } from "./metaTags";
 
 type SeoHeadProps = {
   pathname: string;
@@ -18,6 +18,7 @@ export function SeoHead({ pathname }: SeoHeadProps) {
   useLayoutEffect(() => {
     const page = getPageSeo(pathname);
     const canonicalUrl = absoluteRouteUrl(page.path);
+
     applyMetaTags({
       title: page.title,
       description: page.description,
@@ -27,9 +28,7 @@ export function SeoHead({ pathname }: SeoHeadProps) {
       keywords: siteKeywords(),
     });
 
-    const faviconHref = publicAssetPath("favicon.svg");
-    upsertLink("icon", faviconHref, { type: "image/svg+xml" });
-    upsertLink("apple-touch-icon", faviconHref);
+    applyBrandHeadLinks();
   }, [pathname]);
 
   return null;

@@ -12,13 +12,29 @@ function upsertMeta(attr: MetaAttr, key: string, content: string) {
   element.setAttribute("content", content);
 }
 
+export type HeadLinkDescriptor = {
+  rel: string;
+  href: string;
+  attrs?: Record<string, string>;
+};
+
+function linkSelector(rel: string, attrs?: Record<string, string>): string {
+  if (rel === "canonical") return `link[rel="canonical"]`;
+  if (rel === "apple-touch-icon") return `link[rel="apple-touch-icon"]`;
+  if (attrs?.sizes) return `link[rel="${rel}"][sizes="${attrs.sizes}"]`;
+  if (attrs?.type) return `link[rel="${rel}"][type="${attrs.type}"]`;
+  return `link[rel="${rel}"]`;
+}
+
 export function upsertLink(
   rel: string,
   href: string,
   extra?: Record<string, string>,
 ) {
   if (!href) return;
-  let element = document.head.querySelector<HTMLLinkElement>(`link[rel="${rel}"]`);
+  let element = document.head.querySelector<HTMLLinkElement>(
+    linkSelector(rel, extra),
+  );
   if (!element) {
     element = document.createElement("link");
     element.rel = rel;
@@ -29,6 +45,13 @@ export function upsertLink(
     for (const [key, value] of Object.entries(extra)) {
       element.setAttribute(key, value);
     }
+  }
+}
+
+/** Replace or create each listed link without clobbering other `rel` variants. */
+export function syncHeadLinks(descriptors: HeadLinkDescriptor[]): void {
+  for (const { rel, href, attrs } of descriptors) {
+    upsertLink(rel, href, attrs);
   }
 }
 

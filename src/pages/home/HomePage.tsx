@@ -1,24 +1,20 @@
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
 
+import { lazyNamed } from "../../shared/utils/lazyNamed";
 import { HeroSection } from "./sections/Hero";
 
-const Mission = lazy(() =>
-  import("./sections/Mission").then((module) => ({ default: module.Mission })),
+const Mission = lazyNamed(() => import("./sections/Mission"), "Mission");
+const ProjectsSection = lazyNamed(
+  () => import("./sections/Projects"),
+  "ProjectsSection",
 );
-const ProjectsSection = lazy(() =>
-  import("./sections/Projects").then((module) => ({
-    default: module.ProjectsSection,
-  })),
+const JourneySection = lazyNamed(
+  () => import("./sections/Journey"),
+  "JourneySection",
 );
-const JourneySection = lazy(() =>
-  import("./sections/Journey").then((module) => ({
-    default: module.JourneySection,
-  })),
-);
-const SkillsSection = lazy(() =>
-  import("./sections/Skills").then((module) => ({
-    default: module.SkillsSection,
-  })),
+const SkillsSection = lazyNamed(
+  () => import("./sections/Skills"),
+  "SkillsSection",
 );
 
 export function HomePage() {

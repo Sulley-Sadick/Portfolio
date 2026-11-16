@@ -75,4 +75,20 @@ export const PROFESSIONAL_JOURNEY: ProfessionalJourneyType[] = [
       "Deployed both apps on Vercel with public GitHub repos; stack aligns with HTML, CSS, and JavaScript in projects.",
     ],
   },
+  {
+    cardId: 5,
+    organization: "Golden Star Resources Ltd.",
+    role: "Security Personnel",
+    locationType: "On site",
+    period: {
+      start: "March 2022",
+      end: "Present",
+    },
+    achievements: [
+      "Current on-site security role with consistent adherence to procedures, reporting, and site standards.",
+      "Maintains clear documentation, teamwork, and accountability in a structured industrial environment.",
+      "Demonstrates reliability and professional conduct across departments and shift-based workflows.",
+      "Applies the same discipline to self-directed front-end study and portfolio work alongside this career.",
+    ],
+  },
 ];

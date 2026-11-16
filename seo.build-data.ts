@@ -2,6 +2,9 @@
 
 export const CANONICAL_HOST = "www.sulleysadick.dev";
 
+/** Keep in sync with `src/config/branding.ts` → `DEFAULT_SHARE_IMAGE`. */
+export const BUILD_SHARE_IMAGE_PATH = "branding/sulley-portrait-512.png";
+
 export const BUILD_PAGE_SEO = {
   home: {
     path: "/",

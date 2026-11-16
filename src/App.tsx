@@ -1,19 +1,18 @@
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
 import { Route, Routes } from "react-router";
 
 import { AppLayout } from "./shared/layouts/AppLayout";
+import { lazyNamed } from "./shared/utils/lazyNamed";
 import { HomePage } from "./pages/home/HomePage";
 
-const AboutPage = lazy(() =>
-  import("./pages/about/AboutPage").then((module) => ({
-    default: module.AboutPage,
-  })),
+const AboutPage = lazyNamed(
+  () => import("./pages/about/AboutPage"),
+  "AboutPage",
 );
 
-const ContactPage = lazy(() =>
-  import("./pages/contact/ContactPage").then((module) => ({
-    default: module.ContactPage,
-  })),
+const ContactPage = lazyNamed(
+  () => import("./pages/contact/ContactPage"),
+  "ContactPage",
 );
 
 export function App() {

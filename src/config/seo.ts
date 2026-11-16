@@ -1,4 +1,5 @@
 import { DEVELOPER } from "../features/about/developer.db";
+import { DEFAULT_SHARE_IMAGE } from "./branding";
 import { canonicalRouteUrl } from "./canonicalUrl";
 import { socials } from "./socials";
 import { getEnv } from "./utils/getEnv";
@@ -45,7 +46,8 @@ export const PAGE_SEO: Record<"home" | "about" | "contact", PageSeoConfig> = {
   },
 };
 
-export const DEFAULT_OG_IMAGE = "images/projects/portfolio.png";
+/** Same portrait as navbar; used for Open Graph, Twitter, and Person schema. */
+export const DEFAULT_OG_IMAGE = DEFAULT_SHARE_IMAGE;
 
 export function getPageSeoKey(pathname: string): keyof typeof PAGE_SEO {
   const normalized = pathname.replace(/\/$/, "") || "/";

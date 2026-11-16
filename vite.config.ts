@@ -5,7 +5,11 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, loadEnv, type Plugin } from "vite";
 
-import { BUILD_PAGE_SEO, CANONICAL_HOST } from "./seo.build-data.ts";
+import {
+  BUILD_PAGE_SEO,
+  BUILD_SHARE_IMAGE_PATH,
+  CANONICAL_HOST,
+} from "./seo.build-data.ts";
 
 const FALLBACK_SITE_URL = `https://${CANONICAL_HOST}/`;
 
@@ -164,7 +168,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
   const base = env.VITE_BASE_PATH || "/";
   const siteUrl = normalizeSiteUrl(env.VITE_APP_URL);
-  const ogImage = new URL("images/projects/portfolio.png", siteUrl).href;
+  const ogImage = new URL(BUILD_SHARE_IMAGE_PATH, siteUrl).href;
 
   return {
     base,
