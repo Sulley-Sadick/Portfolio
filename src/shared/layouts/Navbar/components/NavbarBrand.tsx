@@ -23,8 +23,10 @@ export function NavbarBrand() {
       <Image
         alt={developer.name}
         url={developer.avatar2}
+        objectFit="cover"
         className="border-muted-secondary relative size-10 shrink-0 overflow-hidden rounded-full border p-0.5"
-        imageClassName="object-cover object-[center_30%]"
+        imageClassName="object-[center_30%]"
+        sizes="40px"
       />
       <div>
         <Link to={routes.home} onClick={handleClick}>

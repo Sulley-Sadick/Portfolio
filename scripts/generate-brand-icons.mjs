@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 /** Keep in sync with `src/config/branding.ts`. */
-const PORTRAIT_SOURCE = "src/assets/images/sadick2.jpg";
+const PORTRAIT_SOURCE = "src/assets/images/avatar2.jpg";
 const OUT_DIR = "public/branding";
 const OUTPUTS = [
   { file: "sulley-portrait-48.png", size: 48 },
