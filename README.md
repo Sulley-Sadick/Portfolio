@@ -83,22 +83,24 @@ Copy `.env.example` to `.env` and fill in values:
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `VITE_BASE_PATH` | Yes | `/` for custom domain production |
-| `VITE_APP_URL` | Yes | Canonical site URL, e.g. `https://sulleysadick.dev/` |
-| `VITE_GITHUB_LINK` | Yes | GitHub profile URL |
-| `VITE_EMAIL_LINK` | Yes | Public email |
-| `VITE_WHATSAPP_LINK` | Yes | WhatsApp link |
-| `VITE_LINKEDIN_LINK` | Yes | LinkedIn URL |
-| `VITE_INSTAGRAM_LINK` | Yes | Instagram URL |
-| `VITE_FACEBOOK_LINK` | Yes | Facebook URL |
-| `VITE_PHONE_NUMBER` | Yes | Display / tel contact |
+| `VITE_BASE_PATH` | Yes (prod) | `/` for custom domain production |
+| `VITE_APP_URL` | No* | Canonical site URL; falls back to `https://sulleysadick.dev/` |
+| `VITE_GITHUB_LINK` | No† | GitHub profile URL |
+| `VITE_EMAIL_LINK` | No† | Public email |
+| `VITE_WHATSAPP_LINK` | No† | WhatsApp link |
+| `VITE_LINKEDIN_LINK` | No† | LinkedIn URL |
+| `VITE_INSTAGRAM_LINK` | No† | Instagram URL |
+| `VITE_FACEBOOK_LINK` | No† | Facebook URL |
+| `VITE_PHONE_NUMBER` | No† | Display / tel contact |
 | `VITE_RESUME_LINK` | No | Path under `public/` or full URL; default `resume/Sulley-Sadick-Resume.pdf` |
-| `VITE_SUPABASE_URL` | Yes* | Supabase project URL |
-| `VITE_SUPABASE_PUBLISHER_KEY` | Yes* | Supabase anon/publishable key |
-| `VITE_SERVER_URI` | No | Defaults to `VITE_APP_URL` |
+| `VITE_SUPABASE_URL` | No‡ | Supabase project URL |
+| `VITE_SUPABASE_PUBLISHER_KEY` | No‡ | Supabase anon/publishable key |
+| `VITE_SERVER_URI` | No | Defaults to `VITE_APP_URL` (or the canonical fallback) |
 | `VITE_GOOGLE_SITE_VERIFICATION` | No | Optional; verification meta is in `index.html` |
 
-\*Required for contact submissions; the rest of the site can load without them.
+\*Used for SEO canonicals/OG; safe fallback keeps the static UI booting.  
+†Missing values omit that link in the UI instead of crashing the app.  
+‡Required for contact form **submissions**; browsing Home/About/Contact UI works without them.
 
 **Production:** mirror the same names as **GitHub Actions secrets** (see `.github/workflows/deploy-github-pages.yml`). Only `.env.example` is committed.
 

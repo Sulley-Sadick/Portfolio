@@ -16,6 +16,8 @@ const socialMediaLinksVariants = motionVariants({
 export function SocialMediaLinks({ className }: ComponentProps<"div">) {
   const socials = CONTACTLINKS;
 
+  if (socials.length === 0) return null;
+
   return (
     <FramerAnimatePosition
       viewport={{ once: true }}

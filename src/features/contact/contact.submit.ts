@@ -5,7 +5,7 @@ import {
   FunctionsRelayError,
 } from "@supabase/supabase-js";
 
-import { supabase } from "../../libs/supabase/supabase-client";
+import { getSupabase } from "../../libs/supabase/supabase-client";
 import {
   CONTACT_HONEYPOT_FIELD,
   CONTACT_RATE_LIMIT_MESSAGE,
@@ -24,6 +24,9 @@ const CONTACT_RELAY_MESSAGE =
   "The messaging service is temporarily unavailable. Please try again in a few minutes.";
 
 const CONTACT_GENERIC_ERROR = "Something went wrong. Please try again.";
+
+const CONTACT_UNCONFIGURED_MESSAGE =
+  "Messaging is not configured in this environment. Please email me directly or try again later.";
 
 export type ContactSubmitResult =
   | { ok: true; message: string; honeypot: boolean }
@@ -109,6 +112,11 @@ export async function submitContactMessage(
       ok: false,
       message: parsed.error.issues[0]?.message ?? "Invalid contact message",
     };
+  }
+
+  const supabase = getSupabase();
+  if (!supabase) {
+    return { ok: false, message: CONTACT_UNCONFIGURED_MESSAGE };
   }
 
   const { error } = await supabase.functions.invoke("submit-contact", {

@@ -12,6 +12,7 @@ export type AboutDeveloperType = Readonly<{
     whatsapp: string;
     facebook: string;
     linkedin: string;
+    instagram: string;
   };
 }>;
 
