@@ -89,7 +89,7 @@ function ProjectLinks({
           rel="noopener noreferrer"
           className={linkClass}
         >
-          <SiGithub className="size-4" /> Repo
+          <SiGithub className="size-4" aria-hidden="true" /> Repo
         </a>
       ) : null}
 
@@ -100,7 +100,7 @@ function ProjectLinks({
           rel="noopener noreferrer"
           className={cn(linkClass, "text-accent")}
         >
-          <LuExternalLink className="size-4" /> Live
+          <LuExternalLink className="size-4" aria-hidden="true" /> Live
         </a>
       ) : null}
     </div>

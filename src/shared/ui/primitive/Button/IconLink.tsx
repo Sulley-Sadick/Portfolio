@@ -79,7 +79,7 @@ export function IconLink({
       pad="lg"
       {...props}
     >
-      <Icon className={iconClassName} />
+      <Icon className={iconClassName} aria-hidden="true" />
       {children}
     </Link>
   );

@@ -4,10 +4,7 @@ import { HiPaperAirplane } from "react-icons/hi2";
 import { CONTACT_FIELD_LIMITS } from "../../../features/contact";
 import { useContact } from "../../../shared/hooks/useContact";
 import { cn } from "../../../shared/utils/cn";
-import { useTyping } from "../../../shared/hooks/useTyping";
 import { AccentText } from "../../../shared/ui/primitive/AccentText";
-import { FramerAnimatePosition } from "../../../shared/ui/Framer/components/FramerAnimatePosition";
-import { formButtonVariants, formSectionVariants } from "./constants";
 import { Label } from "../../../shared/ui/primitive/Label";
 import { Input } from "../../../shared/ui/primitive/Input";
 import { FeedbackCard } from "../../../shared/ui/primitive/FeedbackCard";
@@ -27,18 +24,6 @@ export function ContactSection({
     formState: { message, error, success },
   } = useContact();
 
-  const { output: contentHead, ref: refHead } = useTyping({
-    text: "Send a direct",
-    whileInView: true,
-    speedInSeconds: 0.4,
-  });
-
-  const { output: contentTail, ref: refTail } = useTyping({
-    text: " message",
-    whileInView: true,
-    speedInSeconds: 0.65,
-  });
-
   return (
     <form
       className={cn("h-fit w-full py-0", className)}
@@ -46,16 +31,8 @@ export function ContactSection({
       {...props}
     >
       <section className="flex w-full flex-col px-0 py-0">
-        <h3
-          ref={(ref) => {
-            refHead(ref);
-            refTail(ref);
-          }}
-          title="Send me a direct message"
-          className="h-10 text-2xl font-bold"
-        >
-          <AccentText as="span">{contentHead}</AccentText>
-          {contentTail}
+        <h3 title="Send me a direct message" className="h-10 text-2xl font-bold">
+          <AccentText as="span">Send a direct</AccentText> message
         </h3>
 
         {message && (
@@ -68,12 +45,7 @@ export function ContactSection({
             {message}
           </FeedbackCard>
         )}
-        <FramerAnimatePosition
-          initial="hidden"
-          animate="show"
-          variants={formSectionVariants}
-          className="flex flex-col gap-6"
-        >
+        <div className="flex flex-col gap-6">
           <Label.Wrapper>
             <Label.Title>Name</Label.Title>
             <Input
@@ -118,24 +90,22 @@ export function ContactSection({
             aria-hidden="true"
             className="pointer-events-none absolute -left-[9999px] h-px w-px opacity-0"
           />
-        </FramerAnimatePosition>
-        <FramerAnimatePosition animate="show" variants={formButtonVariants}>
-          <Button
-            type="submit"
-            disabled={isLoading}
-            x="center"
-            y="center"
-            w="full"
-            pad="lg"
-            variant="accent"
-            className="group hover:bg-accent-hover mt-4 flex gap-x-1.5 font-bold"
-          >
-            <LoadingSwap isLoading={isLoading}>
-              Send Message
-              <HiPaperAirplane className="size-4" />
-            </LoadingSwap>
-          </Button>
-        </FramerAnimatePosition>
+        </div>
+        <Button
+          type="submit"
+          disabled={isLoading}
+          x="center"
+          y="center"
+          w="full"
+          pad="lg"
+          variant="accent"
+          className="group hover:bg-accent-hover mt-4 flex gap-x-1.5 font-bold"
+        >
+          <LoadingSwap isLoading={isLoading}>
+            Send Message
+            <HiPaperAirplane className="size-4" aria-hidden="true" />
+          </LoadingSwap>
+        </Button>
       </section>
     </form>
   );

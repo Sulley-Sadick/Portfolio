@@ -30,7 +30,7 @@ export function AboutProfileSection() {
           y="center"
           className="flex gap-x-1.5 px-8 py-2"
         >
-          <LuExternalLink className="size-4" />
+          <LuExternalLink className="size-4" aria-hidden="true" />
           See My Resume
         </Link>
       </div>

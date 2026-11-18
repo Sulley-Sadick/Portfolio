@@ -8,7 +8,7 @@ export const CONTACT_FIELD_LIMITS = {
 export const CONTACT_HONEYPOT_FIELD = "honeypot" as const;
 
 export const CONTACT_SUCCESS_MESSAGE =
-  "Your message was sent successfully. I will get back to you soon.";
+  "Thanks — your message was sent. I'll get back to you soon.";
 
 export const CONTACT_RATE_LIMIT_MESSAGE =
   "Too many messages were sent recently. Please try again later.";

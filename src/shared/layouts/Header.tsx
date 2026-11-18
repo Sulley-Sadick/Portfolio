@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { IoMenuSharp, IoCloseSharp } from "react-icons/io5";
 
 import { cn } from "../utils/cn";
@@ -10,11 +10,19 @@ import { Link } from "../ui/primitive/Button/IconLink";
 import { routes } from "../routes/routes";
 import { useScrollDirectionContext } from "../../providers/ScrollDirectionProvider";
 
+const MOBILE_NAV_ID = "mobile-navigation";
+
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  const closeMenuAndReturnFocus = useCallback(() => {
+    setIsMenuOpen(false);
+    queueMicrotask(() => menuButtonRef.current?.focus());
+  }, []);
 
   const { captureRef } = useAutoHide({
-    close: () => setIsMenuOpen(false),
+    close: closeMenuAndReturnFocus,
     isOpen: isMenuOpen,
     event: "click",
   });
@@ -22,6 +30,19 @@ export function Header() {
   const { current: currentScroll } = useScrollDirectionContext();
 
   const ActionIcon = isMenuOpen ? IoCloseSharp : IoMenuSharp;
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      event.preventDefault();
+      closeMenuAndReturnFocus();
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isMenuOpen, closeMenuAndReturnFocus]);
 
   return (
     <>
@@ -35,11 +56,17 @@ export function Header() {
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between">
           <NavbarBrand />
           <Button
+            ref={(node) => {
+              menuButtonRef.current = node;
+              captureRef(0)(node);
+            }}
             className="p-0 text-2xl *:stroke-2 lg:hidden"
-            onClick={() => setIsMenuOpen((a) => !a)}
-            ref={captureRef(0)}
+            onClick={() => setIsMenuOpen((open) => !open)}
+            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isMenuOpen}
+            aria-controls={MOBILE_NAV_ID}
           >
-            <ActionIcon />
+            <ActionIcon aria-hidden="true" />
           </Button>
           <DesktopNavbar />
 
@@ -55,8 +82,9 @@ export function Header() {
       </header>
 
       <MobileNavbar
+        id={MOBILE_NAV_ID}
         isMenuOpen={isMenuOpen}
-        close={() => setIsMenuOpen(false)}
+        close={closeMenuAndReturnFocus}
         captureRef={captureRef}
       />
     </>

@@ -2,7 +2,6 @@ import type { ComponentProps } from "react";
 import { LuBriefcase } from "react-icons/lu";
 import { PiDotOutlineFill } from "react-icons/pi";
 
-import { useTyping } from "../../../shared/hooks/useTyping";
 import { cn } from "../../../shared/utils/cn";
 import { AccentText } from "../../../shared/ui/primitive/AccentText";
 import { Pill } from "../../../shared/ui/primitive/Button/Pill";
@@ -100,16 +99,11 @@ function JourneyCardContent({
   className,
   ...props
 }: JourneyCardContentProps) {
-  const { ref, output: content } = useTyping({
-    text: achievements.join(" "),
-    whileInView: true,
-    speedInSeconds: 0.1,
-  });
+  const content = achievements.join(" ");
 
   return (
     <div
       {...props}
-      ref={ref}
       title={content}
       className={cn("text-neutral-secondary line-clamp-3 text-sm", className)}
     >

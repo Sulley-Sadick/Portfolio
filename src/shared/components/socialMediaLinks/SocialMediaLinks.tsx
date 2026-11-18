@@ -67,7 +67,7 @@ function SocialMediaCard({
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Icon className={cn("size-5", color)} />
+        <Icon className={cn("size-5", color)} aria-hidden="true" />
       </Link>
     </div>
   );

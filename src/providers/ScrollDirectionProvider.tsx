@@ -20,11 +20,12 @@ function GoToTop() {
     <Visibility show={direction === "Top" && currentScroll > 300}>
       <div className="fixed right-0 bottom-15 pr-5 md:bottom-20">
         <Button
+          aria-label="Back to top"
           onClick={() => {
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
         >
-          <LuArrowUpToLine size={30} />
+          <LuArrowUpToLine size={30} aria-hidden="true" />
         </Button>
       </div>
     </Visibility>
