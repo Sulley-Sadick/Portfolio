@@ -4,7 +4,9 @@ import { getEnv } from "./utils/getEnv";
 export const CANONICAL_HOST = "sulleysadick.dev";
 
 function siteOriginFromEnv(): string {
-  const raw = getEnv({ name: "VITE_APP_URL" });
+  const raw = getEnv({ name: "VITE_APP_URL", required: false });
+  if (!raw) return `https://${CANONICAL_HOST}`;
+
   try {
     const parsed = new URL(raw.trim());
     parsed.hostname = CANONICAL_HOST;
