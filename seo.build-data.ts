@@ -1,6 +1,6 @@
 /** Build-time SEO copy — keep in sync with `PAGE_SEO` in `src/config/seo.ts`. */
 
-export const CANONICAL_HOST = "www.sulleysadick.dev";
+export const CANONICAL_HOST = "sulleysadick.dev";
 
 /** Keep in sync with `src/config/branding.ts` → `DEFAULT_SHARE_IMAGE`. */
 export const BUILD_SHARE_IMAGE_PATH = "branding/sulley-portrait-512.png";

@@ -60,7 +60,7 @@ export function getPageSeo(pathname: string): PageSeoConfig {
   return PAGE_SEO[getPageSeoKey(pathname)];
 }
 
-/** Absolute URL for a route (`/`, `/about`, …), using canonical www host. */
+/** Absolute URL for a route (`/`, `/about`, …), using canonical apex host. */
 export function absoluteRouteUrl(pathname: string): string {
   return canonicalRouteUrl(pathname);
 }
