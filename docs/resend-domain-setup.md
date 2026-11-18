@@ -49,10 +49,23 @@ pnpm run supabase:deploy-contact
 
 Until the domain is verified, Resend may reject mail from `@sulleysadick.dev`. For testing only, you can temporarily use `onboarding@resend.dev` in `RESEND_FROM` (Resend sandbox).
 
-## 5. Confirm the integration works
+## 5. Vault secrets for the DB → email trigger
+
+Run **`supabase/sql/vault-contact-email-bootstrap.sql`** once in the SQL Editor (replace placeholders):
+
+| Vault secret | Purpose |
+|--------------|---------|
+| `contact_webhook_service_role_key` | Service role key used by `pg_net` to call `send-contact-email` |
+| `contact_webhook_url` | Full URL: `https://<PROJECT_REF>.supabase.co/functions/v1/send-contact-email` |
+
+Then apply migrations (`supabase db push` or `pnpm supabase:deploy-contact`) so RLS + the parameterized trigger are live.
+
+`CONTACT_EMAIL_TO` is **required** on the Edge Function (no hardcoded inbox fallback).
+
+## 6. Confirm the integration works
 
 1. Open **https://sulleysadick.dev/contact** and submit the form
-2. **Supabase** → **Table Editor** → `contact_messages` — new row should appear
+2. **Supabase** → **Table Editor** → `contact_messages` — new row should appear (service role / dashboard only; anon clients cannot query the table)
 3. **Resend** → **Emails** — delivery log should show **Sent** (or an error with a reason)
 4. Check **CONTACT_EMAIL_TO** inbox (and spam)
 
@@ -66,5 +79,7 @@ If email fails but the row saves, check **Supabase** → **Edge Functions** → 
 |-------|-----|
 | Domain not verified | Wait for DNS; re-check Resend records in Namecheap |
 | `403` / domain not verified from Resend | Do not use `@sulleysadick.dev` until Resend shows Verified |
-| No email, row exists | Vault key + `send-contact-email` trigger; see migration comment in `supabase/migrations/` |
+| No email, row exists | Ensure both Vault secrets exist; see `supabase/sql/vault-contact-email-bootstrap.sql` |
+| `CONTACT_EMAIL_TO is not configured` | `supabase secrets set CONTACT_EMAIL_TO=...` and redeploy |
 | Still `onboarding@resend.dev` in logs | Run `supabase secrets set RESEND_FROM=...` and redeploy functions |
+| `429` from submit-contact | Rate limit: 5 messages / 15 minutes per client IP hash |

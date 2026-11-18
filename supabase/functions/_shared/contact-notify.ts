@@ -8,19 +8,21 @@ type ContactNotifyConfig = {
   to: string;
 };
 
-function readNotifyConfig(): ContactNotifyConfig {
-  const apiKey = Deno.env.get("RESEND_API_KEY");
-
-  if (!apiKey) {
-    throw new Error("RESEND_API_KEY is not configured");
+function requireEnv(name: string): string {
+  const value = Deno.env.get(name)?.trim();
+  if (!value) {
+    throw new Error(`${name} is not configured`);
   }
+  return value;
+}
 
+function readNotifyConfig(): ContactNotifyConfig {
   return {
-    apiKey,
+    apiKey: requireEnv("RESEND_API_KEY"),
     from:
-      Deno.env.get("RESEND_FROM") ??
+      Deno.env.get("RESEND_FROM")?.trim() ||
       "Sulley Sadick <contact@sulleysadick.dev>",
-    to: Deno.env.get("CONTACT_EMAIL_TO") ?? "sulleysadick766@gmail.com",
+    to: requireEnv("CONTACT_EMAIL_TO"),
   };
 }
 
