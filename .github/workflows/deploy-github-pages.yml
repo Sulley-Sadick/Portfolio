@@ -10,13 +10,9 @@ permissions:
   pages: write
   id-token: write
 
-# One Pages deploy at a time. Do NOT cancel in-progress runs: interrupting
-# actions/deploy-pages mid-flight races the Pages API ("Unable to cancel
-# deployment … as it's finished") and marks the workflow cancelled even when
-# build already succeeded. Newer runs wait in queue instead.
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
