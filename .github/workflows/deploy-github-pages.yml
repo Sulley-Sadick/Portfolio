@@ -36,7 +36,7 @@ jobs:
       - name: Build
         run: pnpm run build
         env:
-          # Canonical www host — see docs/custom-domain-setup.md
+          # Canonical apex host — see docs/custom-domain-setup.md
           VITE_BASE_PATH: /
           VITE_APP_URL: ${{ secrets.VITE_APP_URL }}
           VITE_GITHUB_LINK: ${{ secrets.VITE_GITHUB_LINK }}
