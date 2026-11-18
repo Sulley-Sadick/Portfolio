@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { Route, Routes } from "react-router";
 
 import { AppLayout } from "./shared/layouts/AppLayout";
+import { PageFallback } from "./shared/ui/PageFallback";
 import { lazyNamed } from "./shared/utils/lazyNamed";
 import { HomePage } from "./pages/home/HomePage";
 
@@ -23,7 +24,7 @@ export function App() {
         <Route
           path="about"
           element={
-            <Suspense fallback={null}>
+            <Suspense fallback={<PageFallback />}>
               <AboutPage />
             </Suspense>
           }
@@ -31,7 +32,7 @@ export function App() {
         <Route
           path="contact"
           element={
-            <Suspense fallback={null}>
+            <Suspense fallback={<PageFallback />}>
               <ContactPage />
             </Suspense>
           }

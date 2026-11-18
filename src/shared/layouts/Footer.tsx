@@ -148,14 +148,15 @@ function Resources() {
 
       <ul className="flex flex-col gap-2.5">
         {RESOURCES.map((resource) => (
-          <Link
-            href={resource.path}
-            key={resource.title}
-            className="text-neutral-secondary hover:text-white hover:underline hover:decoration-white"
-            pad="none"
-          >
-            <span>{resource.title}</span>
-          </Link>
+          <li key={resource.title}>
+            <Link
+              href={resource.path}
+              className="text-neutral-secondary hover:text-white hover:underline hover:decoration-white"
+              pad="none"
+            >
+              <span>{resource.title}</span>
+            </Link>
+          </li>
         ))}
       </ul>
     </div>

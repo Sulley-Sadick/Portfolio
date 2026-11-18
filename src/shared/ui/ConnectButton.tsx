@@ -25,7 +25,7 @@ export function ConnectButton({ className, ...props }: LinkProps) {
       rel={opensExternally ? "noopener noreferrer" : undefined}
       {...props}
     >
-      <SiWhatsapp /> Let&apos;s build
+      <SiWhatsapp aria-hidden="true" /> Let&apos;s build
     </Link>
   );
 }

@@ -16,6 +16,7 @@ import {
 } from "../../hooks/useSmoothScroll/useSmoothScroll";
 
 type MobileNavbarProps = {
+  id?: string;
   isMenuOpen: boolean;
   close: () => void;
   captureRef: (index?: number) => <T>(ref: T | null) => void;
@@ -30,6 +31,7 @@ const navVariants = motionVariants({
 });
 
 export function MobileNavbar({
+  id,
   className,
   close,
   captureRef,
@@ -41,6 +43,10 @@ export function MobileNavbar({
       {isMenuOpen && (
         <Backdrop className="top-18 lg:hidden">
           <FramerAnimatePosition
+            id={id}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation"
             variants={navVariants}
             animate="show"
             className={cn(

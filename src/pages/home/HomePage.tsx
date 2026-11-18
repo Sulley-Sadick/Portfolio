@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 
 import { lazyNamed } from "../../shared/utils/lazyNamed";
+import { PageFallback } from "../../shared/ui/PageFallback";
 import { HeroSection } from "./sections/Hero";
 
 const Mission = lazyNamed(() => import("./sections/Mission"), "Mission");
@@ -21,7 +22,7 @@ export function HomePage() {
   return (
     <main className="mt-20">
       <HeroSection />
-      <Suspense fallback={null}>
+      <Suspense fallback={<PageFallback className="mt-0 py-12" />}>
         <Mission />
         <ProjectsSection />
         <JourneySection />

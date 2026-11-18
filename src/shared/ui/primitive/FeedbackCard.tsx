@@ -90,7 +90,10 @@ export function FeedbackCard({
         className="flex items-center gap-2"
       >
         {icon && (
-          <Icon className="size-4 shrink-0 transition-transform duration-300"></Icon>
+          <Icon
+            className="size-4 shrink-0 transition-transform duration-300"
+            aria-hidden="true"
+          />
         )}
         <p className="flex-1 leading-relaxed" role={error ? "alert" : "status"}>
           {children}
