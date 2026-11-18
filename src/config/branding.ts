@@ -1,9 +1,9 @@
 /**
- * Public branding assets (generated via `pnpm run brand:icons` from `sadick2.jpg`).
+ * Public branding assets (generated via `pnpm run brand:icons` from `avatar2.jpg`).
  * Paths are relative to `public/`.
  */
 
-export const BRAND_PORTRAIT_SOURCE = "src/assets/images/sadick2.jpg";
+export const BRAND_PORTRAIT_SOURCE = "src/assets/images/avatar2.jpg";
 
 export const brandPortrait = {
   faviconIco: "favicon.ico",

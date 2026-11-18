@@ -6,8 +6,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "assets:optimize": "node scripts/optimize-developer-assets.mjs",
     "brand:icons": "node scripts/generate-brand-icons.mjs",
-    "build": "node scripts/generate-brand-icons.mjs && tsc -b && vite build",
+    "build": "node scripts/optimize-developer-assets.mjs && node scripts/generate-brand-icons.mjs && tsc -b && vite build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",

@@ -1,5 +1,7 @@
 export type AboutDeveloperType = Readonly<{
+  /** Hero portrait URL (optimized WebP from `avatar1.png`). */
   avatar1: string;
+  /** Navbar, footer, and favicon source portrait (`avatar2.jpg`). */
   avatar2: string;
   firstName: "Sulley";
   lastName: "Sadick";

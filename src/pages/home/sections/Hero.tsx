@@ -26,7 +26,7 @@ export function HeroSection() {
       >
         Modern Web Engineering
       </Pill>
-      <section className="section grid w-full grid-rows-[auto_auto] md:grid-cols-2 md:grid-rows-1">
+      <section className="section grid w-full grid-rows-[auto_auto] md:grid-cols-2 md:grid-rows-1 md:items-center">
         <div className="mt-6 h-fit">
           <h1 className="font-finlandica text-6xl font-bold">
             Front-<AccentText>End</AccentText> <br /> Develop
@@ -37,23 +37,24 @@ export function HeroSection() {
           </p>
           <ConnectButton className="mt-8 w-fit" />
         </div>
-        <div className="group relative h-fit">
-          <div className="bg-accent/10 absolute inset-0 scale-150 rounded-full opacity-50 blur-[140px]"></div>
+        <div className="group relative mt-10 md:mt-0">
+          <div className="bg-accent/15 absolute left-1/2 top-1/2 size-64 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-60 blur-[100px] md:size-80" />
           <FramerAnimatePosition
             whileInView="show"
             viewport={{ once: true }}
             variants={imageVariants}
-            className="border-accent mx-auto max-w-100 overflow-y-hidden border-b-4"
+            className="relative mx-auto w-full max-w-[20rem]"
           >
-            <div className="py-4">
-              <Image
-                url={developer.avatar1}
-                alt="Mr. Sulley Sadick image"
-                priority
-                className="relative z-10 mx-auto h-100 p-1 transition-transform"
-                imageClassName="transition-all duration-400 rounded-full"
-              />
-            </div>
+            <Image
+              url={developer.avatar1}
+              alt={`Professional portrait of ${developer.name}`}
+              priority
+              objectFit="cover"
+              rounded="xl"
+              className="aspect-[2/2.72] w-full"
+              sizes="(max-width: 768px) 72vw, 320px"
+              imageClassName="object-[50%_17%]"
+            />
           </FramerAnimatePosition>
         </div>
       </section>
@@ -64,13 +65,11 @@ export function HeroSection() {
 const imageVariants = motionVariants({
   hidden: {
     opacity: 0,
-    height: 0,
-    filter: "grayscale(100%)",
+    y: 12,
   },
   show: {
     opacity: 1,
-    filter: "grayscale(0%)",
-    height: "fit-content",
-    transition: { ease: "linear", duration: 0.5, stiffness: 40 },
+    y: 0,
+    transition: { ease: "easeOut", duration: 0.55 },
   },
 });
