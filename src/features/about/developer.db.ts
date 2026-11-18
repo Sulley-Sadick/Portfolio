@@ -14,8 +14,9 @@ export const DEVELOPER: AboutDeveloperType = Object.freeze({
   phone: socials.phone,
   socials: {
     github: socials.github,
+    whatsapp: socials.whatsapp,
     facebook: socials.facebook,
     linkedin: socials.linkedin,
-    whatsapp: socials.whatsapp,
+    instagram: socials.instagram,
   },
 });
