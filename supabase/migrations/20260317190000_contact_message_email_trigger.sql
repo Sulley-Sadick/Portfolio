@@ -1,5 +1,9 @@
 -- Fires send-contact-email after every insert into contact_messages (async via pg_net).
 --
+-- NOTE: Superseded for webhook URL parameterization by
+--   20261118140100_contact_webhook_url_from_vault.sql
+-- Schema + RLS live in 20261118140000_contact_messages_schema_and_rls.sql
+--
 -- One-time per project (Supabase SQL Editor), store the service role key in Vault:
 --   select vault.create_secret('<YOUR_SERVICE_ROLE_KEY>', 'contact_webhook_service_role_key');
 --

@@ -1,10 +1,12 @@
 import { getEnv } from "./utils/getEnv";
 
 /** Must match `CANONICAL_HOST` in `seo.build-data.ts` and `public/CNAME`. */
-export const CANONICAL_HOST = "www.sulleysadick.dev";
+export const CANONICAL_HOST = "sulleysadick.dev";
 
 function siteOriginFromEnv(): string {
-  const raw = getEnv({ name: "VITE_APP_URL" });
+  const raw = getEnv({ name: "VITE_APP_URL", required: false });
+  if (!raw) return `https://${CANONICAL_HOST}`;
+
   try {
     const parsed = new URL(raw.trim());
     parsed.hostname = CANONICAL_HOST;
@@ -14,7 +16,7 @@ function siteOriginFromEnv(): string {
   }
 }
 
-/** Canonical origin (www) for this site — avoids apex↔www redirect mismatches in Search Console. */
+/** Canonical origin (apex) for this site — avoids apex↔www redirect mismatches in Search Console. */
 export function canonicalOrigin(): string {
   return siteOriginFromEnv();
 }

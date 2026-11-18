@@ -1,6 +1,7 @@
 import type { ComponentProps } from "react";
 import { HiPaperAirplane } from "react-icons/hi2";
 
+import { CONTACT_FIELD_LIMITS } from "../../../features/contact";
 import { useContact } from "../../../shared/hooks/useContact";
 import { cn } from "../../../shared/utils/cn";
 import { useTyping } from "../../../shared/hooks/useTyping";
@@ -75,7 +76,12 @@ export function ContactSection({
         >
           <Label.Wrapper>
             <Label.Title>Name</Label.Title>
-            <Input {...register("name")} placeholder="Enter your name" />
+            <Input
+              {...register("name")}
+              placeholder="Enter your name"
+              maxLength={CONTACT_FIELD_LIMITS.name.max}
+              autoComplete="name"
+            />
           </Label.Wrapper>
 
           <Label.Wrapper>
@@ -83,6 +89,8 @@ export function ContactSection({
             <Input
               {...register("contact")}
               placeholder="johnsmith@gmail.com / +233 54 586 2254"
+              maxLength={CONTACT_FIELD_LIMITS.contact.max}
+              autoComplete="email"
             />
           </Label.Wrapper>
 
@@ -92,9 +100,24 @@ export function ContactSection({
               {...register("message")}
               className="h-25 resize-none"
               placeholder="Your message"
+              maxLength={CONTACT_FIELD_LIMITS.message.max}
             />
           </Label.Wrapper>
-          <Input hidden {...register("honeypot")} autoComplete="off" />
+          {/*
+            Honeypot: must expose a real `name` so FormData / autofill bots can fill it.
+            Hidden from assistive tech and keyboard users.
+          */}
+          <Input
+            {...register("honeypot")}
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            autoCapitalize="off"
+            autoCorrect="off"
+            spellCheck={false}
+            aria-hidden="true"
+            className="pointer-events-none absolute -left-[9999px] h-px w-px opacity-0"
+          />
         </FramerAnimatePosition>
         <FramerAnimatePosition animate="show" variants={formButtonVariants}>
           <Button

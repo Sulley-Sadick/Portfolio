@@ -16,13 +16,19 @@ export function getEnv(props: {
   required: false;
 }): string | undefined;
 
+/**
+ * Read a Vite `import.meta.env` value.
+ * Prefer `required: false` for anything that should not blank-screen the static UI.
+ */
 export function getEnv({ name, description = "", required }: GetEnvProps) {
-  const value = import.meta.env[name.trim()];
+  const raw = import.meta.env[name.trim()];
+  const value = typeof raw === "string" ? raw.trim() : raw;
 
-  if (required !== false && !value)
+  if (required !== false && !value) {
     throw new Error(
-      `${name} ${description} : is a required variable environment but not defined!`,
+      `${name}${description ? ` ${description}` : ""} is required but not defined.`,
     );
+  }
 
-  return value;
+  return value || undefined;
 }
