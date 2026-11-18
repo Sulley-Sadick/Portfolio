@@ -38,7 +38,10 @@ export function useForm<T extends Record<string, unknown>>({
 
   const register = useCallback(
     <P extends Path<T>>(path: P) => {
+      const name = String(path);
+
       return {
+        name,
         value: (getPathValueFromData(formData, path) ?? "") as string,
         onChange(e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) {
           setValue(path, e.target.value as PathValue<T, P>);

@@ -166,8 +166,12 @@ Submit `https://sulleysadick.dev/sitemap.xml` after deploy. The ownership meta t
 
 ## Contact backend (Supabase)
 
-- Client: `src/libs/supabase/supabase-client.ts`
+- Client: `src/libs/supabase/supabase-client.ts` → `submitContactMessage` in `src/features/contact/`
 - Edge Functions: `supabase/functions/submit-contact`, `send-contact-email`
+- Schema / RLS: `supabase/migrations/20261118140000_contact_messages_schema_and_rls.sql`  
+  (`contact_messages` is service-role only; anon cannot read or write the table directly)
+- Limits: field max lengths + **5 submissions / 15 minutes / IP hash** in `submit-contact`
+- Vault bootstrap (service role key + webhook URL): `supabase/sql/vault-contact-email-bootstrap.sql`
 - Deploy: `pnpm supabase:deploy-contact` (Supabase CLI + linked project)
 - Custom sender domain: **`docs/resend-domain-setup.md`** (Resend + Namecheap DNS + Supabase secrets)
 

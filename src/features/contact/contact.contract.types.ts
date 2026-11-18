@@ -1,5 +1,3 @@
-import type { FetchStatus } from "./../../shared/utils/response/response.utils.types";
-
 export type SocialMediaProps = {
   title: string;
   color: string;
@@ -11,10 +9,5 @@ export type ContactDataType = {
   name: string;
   message: string;
   contact: string;
-  honeypot?: string | undefined;
+  honeypot?: string;
 };
-
-export interface IContactService {
-  socials: () => SocialMediaProps[];
-  create: (props: ContactDataType) => Promise<FetchStatus>;
-}
